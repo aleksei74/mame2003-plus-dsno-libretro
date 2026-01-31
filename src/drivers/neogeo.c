@@ -9658,9 +9658,9 @@ ROM_END
 
 ROM_START( kof2k3uh )
 	ROM_REGION( 0x800000, REGION_CPU1, 0 )
-	ROM_LOAD16_WORD_SWAP( "271-p1uh.p1", 0x000000, 0x800000, CRC(edee74d9) SHA1(c391a2473a5cfd07b90b66b9f276a21f8da0fab1) )
+	ROM_LOAD16_WORD_SWAP( "271-p1uh.p1", 0x000000, 0x800000, CRC(ab2da490) SHA1(edc0965e994ad37cf7e1f4fb4143a364dab91b80) )
 
-	NEO_SFIX_512K( "271-s1d.s1", CRC(3230e10f) SHA1(a7aa4c11be7de5969e00338c7f424811174a8ad6) )
+	NEO_SFIX_512K( "271-s1d.s1", CRC(029f2af3) SHA1(93bcf0f92cf38748ea552383c2159a5d10379590) )
 
 	NEO_BIOS_SOUND_512K( "271-m1d.m1", CRC(cc8b54c0) SHA1(c0dabaad7a8e9e57774af8fa1009296af5c60005) )
 
@@ -9679,6 +9679,31 @@ ROM_START( kof2k3uh )
 	ROM_LOAD16_BYTE( "271-c6d.c6", 0x2000001, 0x800000, CRC(9f8674b8) SHA1(65964f40b2227d020023fb436579927e65807dcd) ) /* Plane 2,3 */
 	ROM_LOAD16_BYTE( "271-c7d.c7", 0x3000000, 0x800000, CRC(8ee6b43c) SHA1(c78b749c7c8e1d8ab8335b96da03764cc8e9eb21) ) /* Plane 0,1 */
 	ROM_LOAD16_BYTE( "271-c8d.c8", 0x3000001, 0x800000, CRC(6d8d2d60) SHA1(841698eead0f7d422937ce2f2329e17c383d90a6) ) /* Plane 2,3 */
+ROM_END
+
+ROM_START( kof2k3k )
+	ROM_REGION( 0x800000, REGION_CPU1, 0 )
+	ROM_LOAD16_WORD_SWAP( "271-p1dk.p1", 0x000000, 0x800000, CRC(8544a84a) SHA1(5f135888f49ae6f1ccf0e98f4159992dce410725) )
+
+	NEO_SFIX_512K( "271-s1dk.s1", CRC(11f23e44) SHA1(b2fcd7daf9d044a10e9cab9957a0aa2cbebddc4f) )
+
+	NEO_BIOS_SOUND_512K( "271-m1d.m1", CRC(cc8b54c0) SHA1(c0dabaad7a8e9e57774af8fa1009296af5c60005) )
+
+	ROM_REGION( 0x1000000, REGION_SOUND1, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "271-v1d.v1", 0x000000, 0x800000, CRC(dd6c6a85) SHA1(e32b16d0b716a4f3b95868457347303d020147fb) )
+	ROM_LOAD( "271-v2d.v2", 0x800000, 0x800000, CRC(0e84f8c1) SHA1(28c964fe89c800b445d3a65c965de32b4e504726) )
+
+	NO_DELTAT_REGION
+
+	ROM_REGION( 0x4000000, REGION_GFX3, 0 )
+	ROM_LOAD16_BYTE( "271-c1dk.c1", 0x0000000, 0x800000, CRC(fc744083) SHA1(fd2d46359d1081fca97139f132f0d162ae8810c0) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "271-c2dk.c2", 0x0000001, 0x800000, CRC(e22adf66) SHA1(fce7b627c31c383df931158cff9f185b3da72490) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "271-c3d.c3",  0x1000000, 0x800000, CRC(d334fdd9) SHA1(1efe30b4f56a55e25ab518cf6999de797b5e407c) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "271-c4d.c4",  0x1000001, 0x800000, CRC(0d457699) SHA1(ec73d0c9fc7094d0ac6c0986a6e07cde25893e57) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "271-c5d.c5",  0x2000000, 0x800000, CRC(8a91aae4) SHA1(802f4baacf801646be1ef686e105b2e867a6a5df) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "271-c6d.c6",  0x2000001, 0x800000, CRC(9f8674b8) SHA1(65964f40b2227d020023fb436579927e65807dcd) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "271-c7dk.c7", 0x3000000, 0x800000, CRC(cd3c4d02) SHA1(67d11ab19965a0cfd58a58d14e9b0f5bf2f5f89d) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "271-c8dk.c8", 0x3000001, 0x800000, CRC(6ec4a23b) SHA1(4e3713444997420244cca29dc4636e96963d7b45) ) /* Plane 2,3 */
 ROM_END
 
 ROM_START( kf2k3bl ) 
@@ -11134,6 +11159,7 @@ GAME ( 2003, kf2k3pcb,     0,                    neogeo, neogeo,  kf2k3pcb, ROT0
 GAMEB( 2003, kof2003,      neogeo,       neogeo, neogeo, neogeo,  kof2003,  ROT0, "SNK Playmore", "The King of Fighters 2003 (NGM-2710, Export)", &neogeo_ctrl, NULL )
 GAMEB( 2003, kof2003h,     kof2003,      neogeo, neogeo, neogeo,  kof2003h, ROT0, "SNK Playmore", "The King of Fighters 2003 (NGH-2710)", &neogeo_ctrl, NULL )
 GAMEB( 2024, kof2k3uh,     kof2003,      neogeo, neogeo, neogeo,  kof2k3uh, ROT0, "SNK Playmore", "The King of Fighters 2003 (AES Uncensored Hack)", &neogeo_ctrl, NULL )
+GAMEB( 2026, kof2k3k,      kof2003,      neogeo, neogeo, neogeo,  kof2k3uh, ROT0, "SNK Playmore", "The King of Fighters 2003 (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 2003, kf2k3bl,      kof2003,      neogeo, neogeo, neogeo,  kf2k3bl,  ROT0, "bootleg", "The King of Fighters 2003 (bootleg set 1)", &neogeo_ctrl, NULL ) /* zooming is wrong because its a bootleg of the pcb version on a cart (unless it was a bootleg pcb with the new bios?) */
 GAMEB( 2003, kf2k3bla,     kof2003,      neogeo, neogeo, neogeo,  kf2k3pl,  ROT0, "bootleg", "The King of Fighters 2003 (bootleg set 2)", &neogeo_ctrl, NULL ) /* zooming is wrong because its a bootleg of the pcb version on a cart */
 GAMEB( 2003, kf2k3pl,      kof2003,      neogeo, neogeo, neogeo,  kf2k3pl,  ROT0, "bootleg", "The King of Fighters 2004 Plus / Hero (bootleg of The King of Fighters 2003)", &neogeo_ctrl, NULL ) /* zooming is wrong because its a bootleg of the pcb version on a cart */

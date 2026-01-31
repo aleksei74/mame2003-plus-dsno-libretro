@@ -6238,6 +6238,7 @@ Other Sun games
 	DRIVER( kof2003 )	/* 0271 (c) 2003 SNK Playmore */
 	DRIVER( kof2003h )	/* 0271 (c) 2003 SNK Playmore */
 	DRIVER( kof2k3uh )	/* 0271 (c) 2024 (AES Uncensored Hack) SNK Playmore */
+	DRIVER( kof2k3k )	/* 0271 (c) 2026 (Korean Translation) SNK Playmore */
 	DRIVER( kf2k3bl)	/* bootleg */
 	DRIVER( kf2k3bla)	/* bootleg */
 	DRIVER( kf2k3pl)	/* bootleg */
