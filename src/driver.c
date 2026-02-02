@@ -3625,7 +3625,8 @@ BOMULEUL CHAJARA SEGA ST-V  1997/04/11
 	DRIVER( boogwinga )	/* MBD (c) 1993 Data East Corporation (Asia) */
 	DRIVER( ragtime )	/* MBD (c) 1993 Data East Corporation (Japan)*/
 	DRIVER( ragtimea )	/* MBD (c) 1993 Data East Corporation (Japan)*/
-	DRIVER( dblewing )      /* MBE (c) 1993 Mitchell */
+	DRIVER( dblewing )	/* MBE (c) 1993 Mitchell */
+	DRIVER( dblewingb )	/* MBE (c) 1994 Mitchell */
 	DRIVER( fghthist )	/* MBF (c) 1993 Data East Corporation (World) */
 	DRIVER( fghthistu )	/* MBF (c) 1993 Data East Corporation (US) */
 	DRIVER( fghthista )	/* MBF (c) 1993 Data East Corporation (US) */
@@ -6021,6 +6022,7 @@ Other Sun games
 	DRIVER( samsho2 )	/* 0063 (c) 1994 SNK */
 	DRIVER( samsho2k )	/* 0063 (c) 1994 SNK */
 	DRIVER( samsho2ka )	/* 0063 (c) 1994 SNK */
+	DRIVER( samsho2kr )	/* 0063 (c) 2026 (Korean Translation) SNK */
 	DRIVER( samsho2uh )	/* 0063 (c) 2024 (AES Uncensored Hack) SNK */
 	DRIVER( wh2j )		/* 0064 (c) 1994 ADK / SNK */
 	DRIVER( wjammers )	/* 0065 (c) 1994 Data East Corporation */
@@ -6236,6 +6238,7 @@ Other Sun games
 	DRIVER( kof2003 )	/* 0271 (c) 2003 SNK Playmore */
 	DRIVER( kof2003h )	/* 0271 (c) 2003 SNK Playmore */
 	DRIVER( kof2k3uh )	/* 0271 (c) 2024 (AES Uncensored Hack) SNK Playmore */
+	DRIVER( kof2k3k )	/* 0271 (c) 2026 (Korean Translation) SNK Playmore */
 	DRIVER( kf2k3bl)	/* bootleg */
 	DRIVER( kf2k3bla)	/* bootleg */
 	DRIVER( kf2k3pl)	/* bootleg */
