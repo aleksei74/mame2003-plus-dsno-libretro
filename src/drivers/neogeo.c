@@ -2182,6 +2182,32 @@ ROM_START( cyberlip )
 	ROM_LOAD16_BYTE( "010-c6.c6", 0x200001, 0x80000, CRC(c495c567) SHA1(2f58475fbb5f1adafce027d396fb05dd71e8fb55) ) /* Plane 2,3 */
 ROM_END
 
+ROM_START( cyberlipk )
+	ROM_REGION( 0x100000, REGION_CPU1, 0 )
+	ROM_LOAD16_WORD_SWAP( "010-p1k.p1", 0x000000, 0x080000, CRC(0069358b) SHA1(e8f8e0ca5c7c7ac43fed390ee26957e993562899) )
+
+	NEO_SFIX_128K( "010-s1k.s1", CRC(92fc299b) SHA1(eb144a12422e50cb28a6787490d3b3f7acb69381) )
+
+	NEO_BIOS_SOUND_128K( "010-m1.m1", CRC(8be3a078) SHA1(054ec6a061fcc88df1ecbb0a01611a31f37a7709) )
+
+	ROM_REGION( 0x200000, REGION_SOUND1, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "010-v11.v11", 0x000000, 0x080000, CRC(90224d22) SHA1(5443ee6f90d80d43194cb4b4f0e08851a59e7784) )
+	ROM_LOAD( "010-v12.v12", 0x080000, 0x080000, CRC(a0cf1834) SHA1(8df57a7941bdae7e446a6056039adb012cdde246) )
+	ROM_LOAD( "010-v13.v13", 0x100000, 0x080000, CRC(ae38bc84) SHA1(c0937b4f89b8b26c8a0e747b234f44ad6a3bf2ba) )
+	ROM_LOAD( "010-v14.v14", 0x180000, 0x080000, CRC(70899bd2) SHA1(8cf01144f0bcf59f09777175ae6b71846b09f3a1) )
+
+	ROM_REGION( 0x080000, REGION_SOUND2, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "010-v21.v21", 0x000000, 0x080000, CRC(586f4cb2) SHA1(588460031d84c308e3353ecf714db9986425c21c) )
+
+	ROM_REGION( 0x300000, REGION_GFX3, 0 )
+	ROM_LOAD16_BYTE( "010-c1k.c1", 0x000000, 0x80000, CRC(df7c0307) SHA1(6650203e3db2737ea8c393bbdca84c9cf7d83b6c) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "010-c2k.c2", 0x000001, 0x80000, CRC(6aa57e75) SHA1(050f9b1cb4a3b62f46de39d3259875d1ac7eb776) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "010-c3k.c3", 0x100000, 0x80000, CRC(774750e4) SHA1(18076d0409abaabb255fb73aeefec3dcf9b394f7) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "010-c4k.c4", 0x100001, 0x80000, CRC(587799ce) SHA1(105e9b97efa5509c0b4686bb5356ffc65fae86a5) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "010-c5k.c5", 0x200000, 0x80000, CRC(d6642ff2) SHA1(6b2c559b4295a7fbb808b1d28f446e802d6fd5ce) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "010-c6k.c6", 0x200001, 0x80000, CRC(dfc5ce12) SHA1(d5c52b897369dcc247b15d4868f5d3b857692812) ) /* Plane 2,3 */
+ROM_END
+
 ROM_START( superspy )
 	ROM_REGION( 0x100000, REGION_CPU1, 0 )
 	ROM_LOAD16_WORD_SWAP( "011-p1.p1", 0x000000, 0x080000, CRC(c7f944b5) SHA1(da7560e09187c68f1d9f7656218497b4464c56c9) )
@@ -10964,6 +10990,7 @@ GAMEB( 1990, ridheroh,     ridhero,      neogeo, raster, neogeo,  neogeo,   ROT0
 GAMEB( 1991, alpham2,      neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Alpha Mission II / ASO II - Last Guardian (NGM-007 ~ NGH-007)", &neogeo_ctrl, NULL )
 GAMEB( 1991, alpham2p,     alpham2,      neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Alpha Mission II / ASO II - Last Guardian (prototype)", &neogeo_ctrl, NULL )
 GAMEB( 1990, cyberlip,     neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Cyber-Lip (NGM-010)", &neogeo_ctrl, NULL )
+GAMEB( 2026, cyberlipk,    cyberlip,     neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Cyber-Lip (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 1990, superspy,     neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "The Super Spy (NGM-011 ~ NGH-011)", &neogeo_ctrl, NULL )
 GAMEB( 1992, mutnat,       neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Mutation Nation (NGM-014 ~ NGH-014)", &neogeo_ctrl, NULL )
 GAMEB( 1991, kotm,         neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "King of the Monsters (set 1)", &neogeo_ctrl, NULL )

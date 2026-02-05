@@ -97,6 +97,7 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"alpham2") ||
 		!strcmp(Machine->gamedrv->name,"alpham2p") ||
 		!strcmp(Machine->gamedrv->name,"cyberlip") ||
+		!strcmp(Machine->gamedrv->name,"cyberlipk") ||
 		!strcmp(Machine->gamedrv->name,"superspy") ||
 		!strcmp(Machine->gamedrv->name,"mutnat") ||
 		!strcmp(Machine->gamedrv->name,"kotm") ||

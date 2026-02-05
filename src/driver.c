@@ -5928,6 +5928,7 @@ Other Sun games
 	DRIVER( ncombat )	/* 0009 (c) 1990 Alpha Denshi Co. */
 	DRIVER( ncombath )	/* 0009 (c) 1990 Alpha Denshi Co. */
 	DRIVER( cyberlip )	/* 0010 (c) 1990 SNK */
+	DRIVER( cyberlipk )	/* 0010 (c) 2026 (Korean Translation) SNK */
 	DRIVER( superspy )	/* 0011 (c) 1990 SNK */
 	/* 0012 */
 	/* 0013 */
