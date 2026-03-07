@@ -9731,35 +9731,43 @@ ROM_START( kof2003h ) /* Encrypted Code + Sound + GFX Roms */
 	ROM_LOAD16_BYTE( "271-c8k.c8", 0x3000001, 0x800000, CRC(312f528c) SHA1(b4ad75f54f730ada6cb00112b74022250f055725) ) /* Plane 2,3 */
 ROM_END
 
-ROM_START( kof2k3uh )
-	ROM_REGION( 0x800000, REGION_CPU1, 0 )
-	ROM_LOAD16_WORD_SWAP( "271-p1uh.p1", 0x000000, 0x800000, CRC(ab2da490) SHA1(edc0965e994ad37cf7e1f4fb4143a364dab91b80) )
+ROM_START( kof2003u )
+	ROM_REGION( 0x900000, REGION_CPU1, 0 )
+	ROM_LOAD32_WORD_SWAP( "271-p1ku.p1", 0x000000, 0x400000, CRC(85bf46b0) SHA1(539513a10faadecbb1b26ff672bfdc6d66df3dba) )
+	ROM_LOAD32_WORD_SWAP( "271-p2ku.p2", 0x000002, 0x400000, CRC(78691a29) SHA1(5b47485c3ed9de687dd24fc9aa7f0ea2f5a18406) )
+	ROM_LOAD16_WORD_SWAP( "271-p3k.p3",  0x800000, 0x100000, CRC(232702ad) SHA1(6045046027dac1cbd4cbd14b5c1ece522bc6197f) )
 
-	NEO_SFIX_512K( "271-s1d.s1", CRC(029f2af3) SHA1(93bcf0f92cf38748ea552383c2159a5d10379590) )
+	/* The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs */
+	ROM_REGION( 0x80000, REGION_GFX1, 0 ) /* larger char set */
+	ROM_FILL( 0x000000, 0x80000, 0 )
+	ROM_REGION( 0x20000, REGION_GFX2, 0 )
+	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
 
-	NEO_BIOS_SOUND_512K( "271-m1d.m1", CRC(cc8b54c0) SHA1(c0dabaad7a8e9e57774af8fa1009296af5c60005) )
-
-	ROM_REGION( 0x1000000, REGION_SOUND1, ROMREGION_SOUNDONLY )
-	ROM_LOAD( "271-v1d.v1", 0x000000, 0x800000, CRC(dd6c6a85) SHA1(e32b16d0b716a4f3b95868457347303d020147fb) )
-	ROM_LOAD( "271-v2d.v2", 0x800000, 0x800000, CRC(0e84f8c1) SHA1(28c964fe89c800b445d3a65c965de32b4e504726) )
+	NEO_BIOS_AUDIO_ENCRYPTED_512K( "271-m1k.m1", CRC(48d9affe) SHA1(68f01560b91bbada39001ce01bdeeed5c9bb29f2) )
+	
+	ROM_REGION( 0x1000000, REGION_SOUND1, 0 )
+	/* Encrypted */
+	ROM_LOAD( "271-v1c.v1", 0x000000, 0x800000, CRC(ffa3f8c7) SHA1(7cf4a933973ca23b7f87c81151d8659e6ec4bd20) )
+	ROM_LOAD( "271-v2c.v2", 0x800000, 0x800000, CRC(5382c7d1) SHA1(1bf999705eda80ba1e7b0d6bdd010d9bfb18bd76) )
 
 	NO_DELTAT_REGION
 
 	ROM_REGION( 0x4000000, REGION_GFX3, 0 )
-	ROM_LOAD16_BYTE( "271-c1d.c1", 0x0000000, 0x800000, CRC(e42fc226) SHA1(1cd9364993e141facdcdd53ec2277df7b275d8a7) ) /* Plane 0,1 */
-	ROM_LOAD16_BYTE( "271-c2d.c2", 0x0000001, 0x800000, CRC(1b5e3b58) SHA1(0eb254477a9479541291e43e415310852a0f0bed) ) /* Plane 2,3 */
-	ROM_LOAD16_BYTE( "271-c3d.c3", 0x1000000, 0x800000, CRC(d334fdd9) SHA1(1efe30b4f56a55e25ab518cf6999de797b5e407c) ) /* Plane 0,1 */
-	ROM_LOAD16_BYTE( "271-c4d.c4", 0x1000001, 0x800000, CRC(0d457699) SHA1(ec73d0c9fc7094d0ac6c0986a6e07cde25893e57) ) /* Plane 2,3 */
-	ROM_LOAD16_BYTE( "271-c5d.c5", 0x2000000, 0x800000, CRC(8a91aae4) SHA1(802f4baacf801646be1ef686e105b2e867a6a5df) ) /* Plane 0,1 */
-	ROM_LOAD16_BYTE( "271-c6d.c6", 0x2000001, 0x800000, CRC(9f8674b8) SHA1(65964f40b2227d020023fb436579927e65807dcd) ) /* Plane 2,3 */
-	ROM_LOAD16_BYTE( "271-c7d.c7", 0x3000000, 0x800000, CRC(8ee6b43c) SHA1(c78b749c7c8e1d8ab8335b96da03764cc8e9eb21) ) /* Plane 0,1 */
-	ROM_LOAD16_BYTE( "271-c8d.c8", 0x3000001, 0x800000, CRC(6d8d2d60) SHA1(841698eead0f7d422937ce2f2329e17c383d90a6) ) /* Plane 2,3 */
+	/* Encrypted */
+	ROM_LOAD16_BYTE( "271-c1k.c1", 0x0000000, 0x800000, CRC(efb9dd24) SHA1(1c6fe10fdbfc3306c3b7321c731f28ffdbfb15b8) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "271-c2k.c2", 0x0000001, 0x800000, CRC(3fb90447) SHA1(04d196de7c54c77bc75eba56d3060d46efc2d406) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "271-c3k.c3", 0x1000000, 0x800000, CRC(27950f28) SHA1(924f4de61c86b9efde6f1104b986886f1117055d) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "271-c4k.c4", 0x1000001, 0x800000, CRC(735177f8) SHA1(c95da1bc256995a7f44c9cc3312879ab6cbc15d6) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "271-c5k.c5", 0x2000000, 0x800000, CRC(a51b7c0f) SHA1(53dcf692b35b8d32abe5962ac799b8d641f04710) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "271-c6k.c6", 0x2000001, 0x800000, CRC(d5cae4e0) SHA1(248cd9eaac7a04d6b5d80c7534de90b057d566d7) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "271-c7k.c7", 0x3000000, 0x800000, CRC(e65ae2d0) SHA1(39744e10697d7ac539ecfcfa597e75597f321955) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "271-c8k.c8", 0x3000001, 0x800000, CRC(312f528c) SHA1(b4ad75f54f730ada6cb00112b74022250f055725) ) /* Plane 2,3 */
 ROM_END
 
 ROM_START( kof2003k ) /* Encrypted Code + Sound + GFX Roms */
 	ROM_REGION( 0x900000, REGION_CPU1, 0 )
-	ROM_LOAD32_WORD_SWAP( "271-p1kr.p1", 0x000000, 0x400000, CRC(1888bc2e) SHA1(e3c9eb7e3d60a5b5402a0f30a49542890292ddd9) )
-	ROM_LOAD32_WORD_SWAP( "271-p2kr.p2", 0x000002, 0x400000, CRC(1524f74f) SHA1(80793fc3489306018df7cef74ab32172c9dad04d) )
+	ROM_LOAD32_WORD_SWAP( "271-p1kr.p1", 0x000000, 0x400000, CRC(4e88719f) SHA1(4088c1dc655c4256301e34ea53ac957896791101) )
+	ROM_LOAD32_WORD_SWAP( "271-p2kr.p2", 0x000002, 0x400000, CRC(6ec43161) SHA1(46129f78f7a18a4d65db685025c3d246144326ff) )
 	ROM_LOAD16_WORD_SWAP( "271-p3kr.p3", 0x800000, 0x100000, CRC(67320237) SHA1(65dd3512b801a7feaed2d1545b57e893d3219cd0) )
 
 	/* The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs */
@@ -10936,12 +10944,6 @@ DRIVER_INIT( kof2003h )
 	install_pvc_protection();
 }
 
-DRIVER_INIT( kof2k3uh )
-{
-	neogeo_fix_bank_type = 2;
-	init_neogeo();
-}
-
 DRIVER_INIT( kf2k3bl )
 {
 	cmc50_neogeo_gfx_decrypt(0x9d);
@@ -11242,8 +11244,8 @@ GAMEB( 2024, samsh5spuh,   samsh5sp,     neogeo, neogeo, neogeo,  mslug5uh, ROT0
 GAME ( 2003, kf2k3pcb,     0,                    neogeo, neogeo,  kf2k3pcb, ROT0, "SNK Playmore", "The King of Fighters 2003 (Japan, JAMMA PCB)" ) /* not a clone of neogeo because it's NOT a neogeo cart. */
 GAMEB( 2003, kof2003,      neogeo,       neogeo, neogeo, neogeo,  kof2003,  ROT0, "SNK Playmore", "The King of Fighters 2003 (NGM-2710, Export)", &neogeo_ctrl, NULL )
 GAMEB( 2003, kof2003h,     kof2003,      neogeo, neogeo, neogeo,  kof2003h, ROT0, "SNK Playmore", "The King of Fighters 2003 (NGH-2710)", &neogeo_ctrl, NULL )
+GAMEB( 2026, kof2003u,     kof2003,      neogeo, neogeo, neogeo,  kof2003h, ROT0, "SNK Playmore", "The King of Fighters 2003 (AES Uncensored Hack)", &neogeo_ctrl, NULL )
 GAMEB( 2026, kof2003k,     kof2003,      neogeo, neogeo, neogeo,  kof2003h, ROT0, "SNK Playmore", "The King of Fighters 2003 (Korean Translation)", &neogeo_ctrl, NULL )
-GAMEB( 2024, kof2k3uh,     kof2003,      neogeo, neogeo, neogeo,  kof2k3uh, ROT0, "SNK Playmore", "The King of Fighters 2003 (AES Uncensored Hack)", &neogeo_ctrl, NULL )
 GAMEB( 2003, kf2k3bl,      kof2003,      neogeo, neogeo, neogeo,  kf2k3bl,  ROT0, "bootleg", "The King of Fighters 2003 (bootleg set 1)", &neogeo_ctrl, NULL ) /* zooming is wrong because its a bootleg of the pcb version on a cart (unless it was a bootleg pcb with the new bios?) */
 GAMEB( 2003, kf2k3bla,     kof2003,      neogeo, neogeo, neogeo,  kf2k3pl,  ROT0, "bootleg", "The King of Fighters 2003 (bootleg set 2)", &neogeo_ctrl, NULL ) /* zooming is wrong because its a bootleg of the pcb version on a cart */
 GAMEB( 2003, kf2k3pl,      kof2003,      neogeo, neogeo, neogeo,  kf2k3pl,  ROT0, "bootleg", "The King of Fighters 2004 Plus / Hero (bootleg of The King of Fighters 2003)", &neogeo_ctrl, NULL ) /* zooming is wrong because its a bootleg of the pcb version on a cart */

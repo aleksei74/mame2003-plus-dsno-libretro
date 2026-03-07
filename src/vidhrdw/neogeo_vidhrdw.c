@@ -230,8 +230,8 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"kf2k3pcb") ||
 		!strcmp(Machine->gamedrv->name,"kof2003") ||
 		!strcmp(Machine->gamedrv->name,"kof2003h") ||
+		!strcmp(Machine->gamedrv->name,"kof2003u") ||
 		!strcmp(Machine->gamedrv->name,"kof2003k") ||
-		!strcmp(Machine->gamedrv->name,"kof2k3uh") ||
 		!strcmp(Machine->gamedrv->name,"kf2k3bl") ||
 		!strcmp(Machine->gamedrv->name,"kf2k3bla") ||
 		!strcmp(Machine->gamedrv->name,"kf2k3pl") ||
