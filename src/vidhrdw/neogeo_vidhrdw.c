@@ -97,6 +97,7 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"alpham2") ||
 		!strcmp(Machine->gamedrv->name,"alpham2p") ||
 		!strcmp(Machine->gamedrv->name,"cyberlip") ||
+		!strcmp(Machine->gamedrv->name,"cyberlipk") ||
 		!strcmp(Machine->gamedrv->name,"superspy") ||
 		!strcmp(Machine->gamedrv->name,"mutnat") ||
 		!strcmp(Machine->gamedrv->name,"kotm") ||
@@ -229,8 +230,8 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"kf2k3pcb") ||
 		!strcmp(Machine->gamedrv->name,"kof2003") ||
 		!strcmp(Machine->gamedrv->name,"kof2003h") ||
-		!strcmp(Machine->gamedrv->name,"kof2k3uh") ||
-		!strcmp(Machine->gamedrv->name,"kof2k3k") ||
+		!strcmp(Machine->gamedrv->name,"kof2003u") ||
+		!strcmp(Machine->gamedrv->name,"kof2003k") ||
 		!strcmp(Machine->gamedrv->name,"kf2k3bl") ||
 		!strcmp(Machine->gamedrv->name,"kf2k3bla") ||
 		!strcmp(Machine->gamedrv->name,"kf2k3pl") ||
@@ -241,6 +242,7 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"samsh5spuh") ||
 		!strcmp(Machine->gamedrv->name,"ncombat") ||
 		!strcmp(Machine->gamedrv->name,"ncombath") ||
+		!strcmp(Machine->gamedrv->name,"ncombatk") ||
 		!strcmp(Machine->gamedrv->name,"crsword") ||
 		!strcmp(Machine->gamedrv->name,"crswordk") ||
 		!strcmp(Machine->gamedrv->name,"ncommand") ||

@@ -1370,6 +1370,7 @@ const struct GameDriver *test_drivers[] =
 	DRIVER( piratpet )	/* KN  (c) 1982 Taito America Corporation */
 	DRIVER( alpine )	/* RH  (c) 1982 Taito Corporation */
 	DRIVER( alpinea )	/* RH  (c) 1982 Taito Corporation */
+  DRIVER( adcanoe )	/* ??  (c) 1982 Taito Corporation */
 	DRIVER( timetunl )	/* UN  (c) 1982 Taito Corporation */
 	DRIVER( wwestern )	/* WW  (c) 1982 Taito Corporation */
 	DRIVER( wwester1 )	/* WW  (c) 1982 Taito Corporation */
@@ -5927,7 +5928,9 @@ Other Sun games
 	/* 0008 Sunshine (prototype) 1990 SNK */
 	DRIVER( ncombat )	/* 0009 (c) 1990 Alpha Denshi Co. */
 	DRIVER( ncombath )	/* 0009 (c) 1990 Alpha Denshi Co. */
+	DRIVER( ncombatk )	/* 0009 (c) 2026 (Korean Translation) Alpha Denshi Co. */
 	DRIVER( cyberlip )	/* 0010 (c) 1990 SNK */
+	DRIVER( cyberlipk )	/* 0010 (c) 2026 (Korean Translation) SNK */
 	DRIVER( superspy )	/* 0011 (c) 1990 SNK */
 	/* 0012 */
 	/* 0013 */
@@ -6064,6 +6067,7 @@ Other Sun games
 	DRIVER( whp )		/* 0090 (c) 1995 ADK / SNK */
 	/* 0091 */
 	DRIVER( kabukikl )	/* 0092 (c) 1995 Hudson */
+	DRIVER( kabukiklk )	/* 0092 (c) 2026 (Korean Translation) Hudson */
 	DRIVER( neobombe )	/* 0093 (c) 1997 Hudson */
 	DRIVER( gowcaizr )	/* 0094 (c) 1995 Technos */
 	DRIVER( rbff1 )		/* 0095 (c) 1995 SNK */
@@ -6237,8 +6241,8 @@ Other Sun games
 	DRIVER( kf2k3pcb )	/* 0271 (c) 2003 SNK Playmore */
 	DRIVER( kof2003 )	/* 0271 (c) 2003 SNK Playmore */
 	DRIVER( kof2003h )	/* 0271 (c) 2003 SNK Playmore */
-	DRIVER( kof2k3uh )	/* 0271 (c) 2024 (AES Uncensored Hack) SNK Playmore */
-	DRIVER( kof2k3k )	/* 0271 (c) 2026 (Korean Translation) SNK Playmore */
+	DRIVER( kof2003u )	/* 0271 (c) 2024 (AES Uncensored Hack) SNK Playmore */
+	DRIVER( kof2003k )	/* 0271 (c) 2026 (Korean Translation) SNK Playmore */
 	DRIVER( kf2k3bl)	/* bootleg */
 	DRIVER( kf2k3bla)	/* bootleg */
 	DRIVER( kf2k3pl)	/* bootleg */
