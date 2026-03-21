@@ -281,7 +281,9 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"quizkofk") ||
 		!strcmp(Machine->gamedrv->name,"pgoal") ||
 		!strcmp(Machine->gamedrv->name,"shocktro") ||
+		!strcmp(Machine->gamedrv->name,"shocktrok") ||
 		!strcmp(Machine->gamedrv->name,"shocktroa") ||
+		!strcmp(Machine->gamedrv->name,"shocktroak") ||
 		!strcmp(Machine->gamedrv->name,"shocktr2") ||
 		!strcmp(Machine->gamedrv->name,"galaxyfg") ||
 		!strcmp(Machine->gamedrv->name,"wakuwak7") ||
