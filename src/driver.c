@@ -5952,6 +5952,7 @@ Other Sun games
 	DRIVER( joyjoy )	/* 0021 (c) 1990 SNK */
 	DRIVER( bjourney )	/* 0022 (c) 1990 Alpha Denshi Co. */
 	DRIVER( bjourneyh )	/* 0022 (c) 1990 Alpha Denshi Co. */
+	DRIVER( bjourneyk )	/* 0022 (c) 2026 (Korean Translation) Alpha Denshi Co. */
 	DRIVER( quizdais )	/* 0023 (c) 1991 SNK */
 	DRIVER( quizdaisk )	/* 0023 (c) 1991 SNK */
 	DRIVER( lresort )	/* 0024 (c) 1992 SNK */
@@ -6073,10 +6074,10 @@ Other Sun games
 	DRIVER( rbff1 )		/* 0095 (c) 1995 SNK */
 	DRIVER( rbff1a )	/* 0095 (c) 1995 SNK */
 	DRIVER( rbff1k )	/* 0095 (c) 1995 SNK */
-	DRIVER( rbff1ka )	/* 0095 (c) 1995 SNK */
 	DRIVER( rbff1uh )	/* 0095 (c) 2024 (AES Uncensored Hack) SNK */
 	DRIVER( rbff1kr )	/* 0095 (c) 2025 (Korean Translation) SNK */
-	DRIVER( rbff1akr )	/* 0095 (c) 2025 (Korean Translation, Bug Fix Revision) SNK */
+	DRIVER( rbff1kra )	/* 0095 (c) 2025 (Korean Translation, Bug Fix Revision) SNK */
+	DRIVER( rbff1ka )	/* 0095 (c) 1995 SNK */
 	DRIVER( aof3 )		/* 0096 (c) 1996 SNK */
 	DRIVER( aof3k )		/* 0096 (c) 1996 SNK */
 	DRIVER( aof3uh )	/* 0096 (c) 2024 (AES Uncensored Hack) SNK */
@@ -6143,7 +6144,9 @@ Other Sun games
 	DRIVER( irrmaze )	/* 0236 (c) 1997 SNK / Saurus */
 	DRIVER( popbounc )	/* 0237 (c) 1997 Video System Co. */
 	DRIVER( shocktro )	/* 0238 (c) 1997 Saurus */
+	DRIVER( shocktrok )	/* 0238 (c) 2026 (Korean Translation) Saurus */
 	DRIVER( shocktroa )	/* 0238 (c) 1997 Saurus */
+	DRIVER( shocktroak )	/* 0238 (c) 2026 (Korean Translation) Saurus */
 	DRIVER( blazstar )	/* 0239 (c) 1998 Yumekobo */
 	DRIVER( rbff2 )		/* 0240 (c) 1998 SNK */
 	DRIVER( rbff2h )	/* 0240 (c) 1998 SNK */
