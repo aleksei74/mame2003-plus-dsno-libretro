@@ -6720,6 +6720,32 @@ ROM_START( lastbladh )
 	ROM_LOAD16_BYTE( "234-c6.c6", 0x2000001, 0x400000, CRC(beafd091) SHA1(55df9cc128eb0f00856de3996c946e3efe8f09a5) ) /* Plane 2,3 */
 ROM_END
 
+ROM_START( lastbladk )
+	ROM_REGION( 0x500000, REGION_CPU1, 0 )
+	ROM_LOAD16_WORD_SWAP( "234-pg1k.p1", 0x000000, 0x100000, CRC(5fefc835) SHA1(88c74750e836a82053ceb447ee483a2f321b9a64) )
+	ROM_LOAD16_WORD_SWAP( "234-p2k.sp2", 0x100000, 0x400000, CRC(b5fe86e9) SHA1(7cf56d9b8b27f7d55e19dcc6e024a2ad4d5aeea6) )
+
+	NEO_SFIX_128K( "234-s1k.s1", CRC(eac83881) SHA1(c64d3fcaa53061808cd1241a277531202b33939d) )
+
+	NEO_BIOS_SOUND_128K( "234-m1.m1", CRC(087628ea) SHA1(48dcf739bb16699af4ab8ed632b7dcb25e470e06) )
+
+	ROM_REGION( 0x1000000, REGION_SOUND1, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "234-v1.v1", 0x000000, 0x400000, CRC(ed66b76f) SHA1(8a05ff06d9b6f01c6c16b3026282eaabb0e25b44) )
+	ROM_LOAD( "234-v2.v2", 0x400000, 0x400000, CRC(a0e7f6e2) SHA1(753ff74fa9294f695aae511ae01ead119b114a57) )
+	ROM_LOAD( "234-v3.v3", 0x800000, 0x400000, CRC(a506e1e2) SHA1(b3e04ba1a5cb50b77c6fbe9fe353b9b64b6f3f74) )
+	ROM_LOAD( "234-v4.v4", 0xc00000, 0x400000, CRC(0e34157f) SHA1(20a1f4833e5e29ba0073c1712d7a17ab7a2a035c) )
+
+	NO_DELTAT_REGION
+
+	ROM_REGION( 0x2800000, REGION_GFX3, 0 )
+	ROM_LOAD16_BYTE( "234-c1k.c1", 0x0000000, 0x800000, CRC(d639ed89) SHA1(999654d90a9b02b307b3cbfa10ac7b307c5bca3e) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "234-c2k.c2", 0x0000001, 0x800000, CRC(556bd717) SHA1(8559d0d7b61da8fa9839858093c880d04c51758e) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "234-c3k.c3", 0x1000000, 0x800000, CRC(b2a7f65f) SHA1(e0e33bbf06dd354a75ce9001760deade2ce6e57b) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "234-c4k.c4", 0x1000001, 0x800000, CRC(cceca5f5) SHA1(cec5c3f0dd7276c20933ee242e7cc0ef251f7fef) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "234-c5k.c5", 0x2000000, 0x400000, CRC(b8dd14ce) SHA1(7686cc7153ae3436b30d4ade373a7edb2b358b9d) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "234-c6k.c6", 0x2000001, 0x400000, CRC(7e25736f) SHA1(1eee79478bc74b08c27788c9bed82dc7da050f58) ) /* Plane 2,3 */
+ROM_END
+
 ROM_START( lastsold )
 	ROM_REGION( 0x500000, REGION_CPU1, 0 )
 	ROM_LOAD16_WORD_SWAP( "134-p1k.p1", 0x000000, 0x100000, CRC(906f3065) SHA1(25167665f1b8e82e13f7fcf4d0e3c54a925c2a58) )
@@ -7084,7 +7110,7 @@ ROM_END
 
 ROM_START( mslug2uh )
 	ROM_REGION( 0x300000, REGION_CPU1, 0 )
-	ROM_LOAD16_WORD_SWAP( "241-p1uh.p1", 0x000000, 0x100000, CRC(97d70cd6) SHA1(d61e5450a299fe9ce4bff48da9c4ada872ac199f) )
+	ROM_LOAD16_WORD_SWAP( "241-p1uh.p1", 0x000000, 0x100000, CRC(68584177) SHA1(2dd432bfca46090216b3d712d5b2170a2cb19199) )
 	ROM_LOAD16_WORD_SWAP( "241-p2.sp2",  0x100000, 0x200000, CRC(38883f44) SHA1(fcf34b8c6e37774741542393b963635412484a27) )
 
 	NEO_SFIX_128K( "241-s1.s1",  CRC(f3d32f0f) SHA1(2dc38b7dfd3ff14f64d5c0733c510b6bb8c692d0) )
@@ -11233,6 +11259,7 @@ GAMEB( 1997, kof97pls,     kof97,        neogeo, neogeo, neogeo,  neogeo,   ROT0
 GAMEB( 1997, kog,          kof97,        neogeo, neogeo, kog,     kog,      ROT0, "bootleg", "King of Gladiator (bootleg of The King of Fighters '97)", &neogeo_ctrl, NULL )
 GAMEB( 1997, lastblad,     neogeo,       neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "The Last Blade / Bakumatsu Roman - Gekka no Kenshi (NGM-2340)", &neogeo_ctrl, NULL )
 GAMEB( 1997, lastbladh,    lastblad,     neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "The Last Blade / Bakumatsu Roman - Gekka no Kenshi (NGH-2340)", &neogeo_ctrl, NULL )
+GAMEB( 2026, lastbladk,    lastblad,     neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "The Last Blade / Bakumatsu Roman - Gekka no Kenshi (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 1997, lastsold,     lastblad,     neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "The Last Soldier (Korean release of The Last Blade)", &neogeo_ctrl, NULL )
 GAMEB( 1997, irrmaze,      neogeo,       neogeo, neogeo, irrmaze, neogeo,   ROT0, "SNK / Saurus", "The Irritating Maze / Ultra Denryu Iraira Bou", &neogeo_ctrl, NULL )
 GAMEB( 1998, rbff2,        neogeo,       neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - The Newcomers (NGM-2400)", &neogeo_ctrl, NULL )

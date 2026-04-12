@@ -6156,6 +6156,7 @@ Other Sun games
 	DRIVER( magdrop3 )	/* 0233 (c) 1997 Data East Corporation */
 	DRIVER( lastblad )	/* 0234 (c) 1997 SNK */
 	DRIVER( lastbladh )	/* 0234 (c) 1997 SNK */
+	DRIVER( lastbladk )	/* 0234 (c) 2026 (Korean Translation) SNK */
 	DRIVER( lastsold )	/* 0234 (c) 1997 SNK */
 	DRIVER( puzzldpr )	/* 0235 (c) 1997 Taito (Visco license) */
 	DRIVER( puzzldprk )	/* 0235 (c) 2006 (Korean Translation) Taito (Visco license) */
