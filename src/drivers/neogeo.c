@@ -7375,9 +7375,35 @@ ROM_START( lastbld2 )
 	ROM_LOAD16_BYTE( "243-c6.c6",  0x2000001, 0x800000, CRC(ec9c36d0) SHA1(e145e9e359000dda6e1dfe95a996bc6d29cfca21) ) /* Plane 2,3 */
 ROM_END
 
+ROM_START( lastbld2k )
+	ROM_REGION( 0x500000, REGION_CPU1, 0 )
+	ROM_LOAD16_WORD_SWAP( "243-p1k.p1",  0x000000, 0x100000, CRC(d765a624) SHA1(5cddbdb716eb6ecc938a339698eac9719b859ffc) )
+	ROM_LOAD16_WORD_SWAP( "243-p2k.sp2", 0x100000, 0x400000, CRC(ed11dd63) SHA1(7ddd7e1fa255c2cff644f806d2a412f655ab3d96) )
+
+	NEO_SFIX_128K( "243-s1k.s1", CRC(5b1f35e5) SHA1(b7e7343774e8262f186f34ee3580e401c5a6ba72) )
+
+	NEO_BIOS_SOUND_128K( "243-m1.m1", CRC(acf12d10) SHA1(6e6b98cc1fa44f24a5168877559b0055e6957b60) )
+
+	ROM_REGION( 0x1000000, REGION_SOUND1, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "243-v1.v1", 0x000000, 0x400000, CRC(f7ee6fbb) SHA1(55137bcabeeb590e40a9b8a7c07dd106e4d12a90) )
+	ROM_LOAD( "243-v2.v2", 0x400000, 0x400000, CRC(aa9e4df6) SHA1(a0b91f63e2552a8ad9e0d1af00e2c38288637161) )
+	ROM_LOAD( "243-v3.v3", 0x800000, 0x400000, CRC(4ac750b2) SHA1(585a154acc67bd84ea5b944686b78ed082b768d9) )
+	ROM_LOAD( "243-v4.v4", 0xc00000, 0x400000, CRC(f5c64ba6) SHA1(2eac455def8c27090862cc042f65a3a8aad88283) )
+
+	NO_DELTAT_REGION
+
+	ROM_REGION( 0x3000000, REGION_GFX3, 0 )
+	ROM_LOAD16_BYTE( "243-c1k.c1",  0x0000000, 0x800000, CRC(336d5343) SHA1(647950b678dbc63dfbd1f0331930ac16fd5462eb) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "243-c2k.c2",  0x0000001, 0x800000, CRC(fef48a79) SHA1(445746fc41bccb8e826c1dd59046cd4b32084545) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "243-c3.c3",   0x1000000, 0x800000, CRC(6054cbe0) SHA1(ec2f65e9c930250ee25fd064ee5ae76a7a9c61d9) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "243-c4.c4",   0x1000001, 0x800000, CRC(8bd2a9d2) SHA1(0935df65cd2b0891a708bcc0f1c188148058d4b5) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "243-c5k.c5",  0x2000000, 0x800000, CRC(011132f8) SHA1(e79f4511503709597e474261505a265292b607a1) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "243-c6k.c6",  0x2000001, 0x800000, CRC(ad4011a4) SHA1(e191cefce00e421cb7f8f154a6866bbcc5eaf7ea) ) /* Plane 2,3 */
+ROM_END
+
 ROM_START( lastbld2uh )
 	ROM_REGION( 0x500000, REGION_CPU1, 0 )
-	ROM_LOAD16_WORD_SWAP( "243-p1uh.p1", 0x000000, 0x100000, CRC(f24d57a1) SHA1(6f5ad47c2c55f9442fa1e86068e072ca428b87fa) )
+	ROM_LOAD16_WORD_SWAP( "243-p1uh.p1", 0x000000, 0x100000, CRC(4c14ddba) SHA1(a1c683306f1e267b0aceaaaadd3f0fc82429fd33) )
 	ROM_LOAD16_WORD_SWAP( "243-p2.sp2",  0x100000, 0x400000, CRC(add4a30b) SHA1(7db62564db49fe0218cbb35b119d62582a24d658) )
 
 	NEO_SFIX_128K( "243-s1.s1", CRC(c9cd2298) SHA1(a9a18b5347f9dbe29a2ccb63fd4c8fd19537bf8b) )
@@ -11277,7 +11303,8 @@ GAMEB( 1998, kof98h,       kof98,        neogeo, neogeo, neogeo,  neogeo,   ROT0
 GAMEB( 2006, kof98kr,      kof98,        neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 2024, kof98uh,      kof98,        neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (AES Uncensored Hack)", &neogeo_ctrl, NULL )
 GAMEB( 1998, lastbld2,     neogeo,       neogeo, ras320, neogeo,  neogeo,   ROT0, "SNK", "The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (NGM-2430 ~ NGH-2430)", &neogeo_ctrl, NULL )
-GAMEB( 2024, lastbld2uh,   lastbld2,     neogeo, ras320, neogeo,  neogeo,   ROT0, "SNK", "The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (AES Uncensored Hack)", &neogeo_ctrl, NULL )
+GAMEB( 2026, lastbld2k,    lastbld2,     neogeo, ras320, neogeo,  neogeo,   ROT0, "SNK", "The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (Korean Translation)", &neogeo_ctrl, NULL )
+GAMEB( 2026, lastbld2uh,   lastbld2,     neogeo, ras320, neogeo,  neogeo,   ROT0, "SNK", "The Last Blade 2 / Bakumatsu Roman - Dai Ni Maku Gekka no Kenshi (AES Uncensored Hack)", &neogeo_ctrl, NULL )
 GAMEB( 1998, neocup98,     neogeo,       neogeo, ras320, neogeo,  neogeo,   ROT0, "SNK", "Neo-Geo Cup '98 - The Road to the Victory", &neogeo_ctrl, NULL )
 GAMEB( 2006, neocup98k,    neocup98,     neogeo, ras320, neogeo,  neogeo,   ROT0, "SNK", "Neo-Geo Cup '98 - The Road to the Victory (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 1999, mslugx,       neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Metal Slug X - Super Vehicle-001 (NGM-2500 ~ NGH-2500)", &neogeo_ctrl, NULL )

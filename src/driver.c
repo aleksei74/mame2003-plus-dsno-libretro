@@ -6182,7 +6182,8 @@ Other Sun games
 	DRIVER( kof98kr )	/* 0242 (c) 2006 (Korean Translation) SNK */
 	DRIVER( kof98uh )	/* 0242 (c) 2024 (AES Uncensored Hack) SNK */
 	DRIVER( lastbld2 )	/* 0243 (c) 1998 SNK */
-	DRIVER( lastbld2uh )	/* 0243 (c) 2024 (AES Uncensored Hack) SNK */
+	DRIVER( lastbld2k )	/* 0243 (c) 2026 (Korean Translation) SNK */
+	DRIVER( lastbld2uh )	/* 0243 (c) 2026 (AES Uncensored Hack) SNK */
 	DRIVER( neocup98 )	/* 0244 (c) 1998 SNK */
 	DRIVER( neocup98k )	/* 0244 (c) 2006 (Korean Translation) SNK */
 	DRIVER( breakrev )	/* 0245 (c) 1998 Visco */
