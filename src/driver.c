@@ -6031,6 +6031,7 @@ Other Sun games
 	DRIVER( kof94uh )	/* 0055 (c) 2024 (AES Uncensored Hack) SNK */
 	DRIVER( aof2 )		/* 0056 (c) 1994 SNK */
 	DRIVER( aof2a )		/* 0056 (c) 1994 SNK */
+	DRIVER( aof2k )		/* 0056 (c) 2026 (Korean Translation) SNK */
 	DRIVER( wh2 )		/* 0057 (c) 1993 ADK */
 	DRIVER( wh2h )		/* 0057 (c) 1993 ADK */
 	DRIVER( fatfursp )	/* 0058 (c) 1993 SNK */
