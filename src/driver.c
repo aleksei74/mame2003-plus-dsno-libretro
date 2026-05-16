@@ -6106,6 +6106,7 @@ Other Sun games
 	DRIVER( turfmast )	/* 0200 (c) 1996 Nazca */
 	DRIVER( mslug )		/* 0201 (c) 1996 Nazca */
 	DRIVER( msluguh )	/* 0201 (c) 2024 (AES Uncensored Hack) Nazca */
+	DRIVER( mslugk )	/* 0201 (c) 2026 (Korean Translation) Nazca */
 	DRIVER( puzzledp )	/* 0202 (c) 1995 Taito (Visco license) */
 	DRIVER( puzzledpk )	/* 0202 (c) 2006 (Korean Translation) Taito (Visco license) */
 	DRIVER( mosyougi )	/* 0203 (c) 1995 ADK / SNK */

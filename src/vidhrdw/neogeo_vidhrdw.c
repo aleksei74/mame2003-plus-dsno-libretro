@@ -275,6 +275,7 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"turfmast") ||
 		!strcmp(Machine->gamedrv->name,"mslug") ||
 		!strcmp(Machine->gamedrv->name,"msluguh") ||
+		!strcmp(Machine->gamedrv->name,"mslugk") ||
 		!strcmp(Machine->gamedrv->name,"zedblade") ||
 		!strcmp(Machine->gamedrv->name,"viewpoin") ||
 		!strcmp(Machine->gamedrv->name,"viewpoinp") ||
