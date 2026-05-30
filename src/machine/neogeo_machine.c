@@ -672,6 +672,7 @@ static void neogeo_custom_memory(void)
 			!strcmp(Machine->gamedrv->name,"garou") ||
 			!strcmp(Machine->gamedrv->name,"garouh") ||
 			!strcmp(Machine->gamedrv->name,"garouha") ||
+			!strcmp(Machine->gamedrv->name,"garouhk") ||
 			!strcmp(Machine->gamedrv->name,"garoup"))
 		sram_protection_hack = 0x100/2;
 

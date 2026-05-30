@@ -6208,6 +6208,7 @@ Other Sun games
 	DRIVER( garou )		/* 0253 (c) 1999 SNK */
 	DRIVER( garouh )	/* 0253 (c) 1999 SNK */
 	DRIVER( garouha )	/* 0253 (c) 1999 SNK */
+	DRIVER( garouhk )	/* 0253 (c) 2026 (Korean Translation) SNK */
 	DRIVER( garoup )	/* 0253 (c) 1999 SNK */
 	DRIVER( s1945p )	/* 0254 (c) 1999 Psikyo */
 	DRIVER( preisle2 )	/* 0255 (c) 1999 Yumekobo */

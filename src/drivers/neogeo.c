@@ -8089,6 +8089,40 @@ ROM_START( garouha )
 	ROM_LOAD16_BYTE( "253-c8.c8", 0x3000001, 0x800000, CRC(21a11303) SHA1(fd61221ad257c185ef5c1f9694bd6b840b591af3) ) /* Plane 2,3 */
 ROM_END
 
+ROM_START( garouhk )
+	ROM_REGION( 0x900000, REGION_CPU1, 0 )
+	ROM_LOAD16_WORD_SWAP( "ke.neo-sma", 0x0c0000, 0x040000, CRC(96c72233) SHA1(29e19effd40fdf7e5144332396857f4ad0eff13e) ) /* stored in the custom chip */
+	ROM_LOAD16_WORD_SWAP( "253-p1k.p1",  0x100000, 0x400000, CRC(b22f2144) SHA1(f983af78d5a84f87fee3c31735da15b71f3ef53b) )
+	ROM_LOAD16_WORD_SWAP( "253-p2k.p2",  0x500000, 0x400000, CRC(1db715f0) SHA1(f2bebe50e6996d23af798ada1f809b06d258ec3e) )
+
+	/* The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs */
+	ROM_REGION( 0x80000, REGION_GFX1, 0 )	/* larger char set */
+	ROM_FILL( 0x000000, 0x20000, 0 )
+	ROM_REGION( 0x20000, REGION_GFX2, 0 )
+	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
+
+	NEO_BIOS_SOUND_256K( "253-m1.m1", CRC(36a806be) SHA1(90fb44dc0c3fb57946a0f35716056abb84a0f191) )
+
+	ROM_REGION( 0x1000000, REGION_SOUND1, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "253-v1.v1", 0x000000, 0x400000, CRC(263e388c) SHA1(11f05feee170370c4bfc5053af79246a6e3de5dc) )
+	ROM_LOAD( "253-v2.v2", 0x400000, 0x400000, CRC(2c6bc7be) SHA1(c9c61054ce1a47bf1bf77a31117726b499df24a4) )
+	ROM_LOAD( "253-v3.v3", 0x800000, 0x400000, CRC(0425b27d) SHA1(986863c98fc3445487242dcf2ea75b075e7f33ee) )
+	ROM_LOAD( "253-v4.v4", 0xc00000, 0x400000, CRC(a54be8a9) SHA1(d7123e79b43e8adfaa5ecadbfcbeb6be890ec311) )
+
+	NO_DELTAT_REGION
+
+	ROM_REGION( 0x4000000, REGION_GFX3, 0 )
+	/* Encrypted */
+	ROM_LOAD16_BYTE( "253-c1k.c1", 0x0000000, 0x800000, CRC(ba9f9e08) SHA1(f78a54fd350c2099f1ae631338a6d8dc3d5f6e41) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "253-c2k.c2", 0x0000001, 0x800000, CRC(d1021625) SHA1(026cb76f673d51d4366d123c613c96d418a7ec80) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "253-c3k.c3", 0x1000000, 0x800000, CRC(8794ee54) SHA1(c810cf31269b33940e1679ddae7129e3850cfd22) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "253-c4k.c4", 0x1000001, 0x800000, CRC(a2cb663a) SHA1(1ebe41a393b2cf0b848696b7595040ba05e41221) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "253-c5k.c5", 0x2000000, 0x800000, CRC(1bbca5f1) SHA1(0fefad3dfd3169ad7861a9438f71b037fdee8315) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "253-c6k.c6", 0x2000001, 0x800000, CRC(855f8121) SHA1(961e27a6471ebe17ffa7500e3862fc4a4427bf55) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "253-c7k.c7", 0x3000000, 0x800000, CRC(22df955a) SHA1(85a12d85cf271947b25ab82bb6a43497400aec31) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "253-c8k.c8", 0x3000001, 0x800000, CRC(4894fa71) SHA1(83e0f98ac65d553222335737478b0ab1c4d58857) ) /* Plane 2,3 */
+ROM_END
+
 ROM_START( garoup ) /* Prototype Version, seems genuine */
 	ROM_REGION( 0x500000, REGION_CPU1, 0 )
 	ROM_LOAD16_WORD_SWAP( "proto_253-p1.p1", 0x000000, 0x100000, CRC(c72f0c16) SHA1(1ff6bb651682f93bef9ff02622c3cf63fe594986) )
@@ -10645,7 +10679,7 @@ DRIVER_INIT( kof2001 )
 DRIVER_INIT( cthd2003 )
 {
 	decrypt_cthd2003();
- 	init_neogeo();
+	init_neogeo();
 	patch_cthd2003();
 }
 
@@ -11369,6 +11403,7 @@ GAMEB( 2024, kof99uh,      kof99,        neogeo, raster, neogeo,  kof99k,   ROT0
 GAMEB( 1999, garou,        neogeo,       neogeo, ras320, neogeo,  garou,    ROT0, "SNK", "Garou - Mark of the Wolves (NGM-2530)", &neogeo_ctrl, NULL ) /* Encrypted Code & GFX */
 GAMEB( 1999, garouh,       garou,        neogeo, ras320, neogeo,  garouh,   ROT0, "SNK", "Garou - Mark of the Wolves (NGM-2530 ~ NGH-2530)", &neogeo_ctrl, NULL ) /* Encrypted Code & GFX */
 GAMEB( 1999, garouha,      garou,        neogeo, ras320, neogeo,  garou,    ROT0, "SNK", "Garou - Mark of the Wolves (NGH-2530)", &neogeo_ctrl, NULL ) /* Encrypted Code & GFX */
+GAMEB( 2026, garouhk,      garou,        neogeo, ras320, neogeo,  garouh,   ROT0, "SNK", "Garou - Mark of the Wolves (Korean Translation)", &neogeo_ctrl, NULL ) /* Encrypted Code & GFX */
 GAMEB( 1999, garoup,       garou,        neogeo, ras320, neogeo,  neogeo,   ROT0, "SNK", "Garou - Mark of the Wolves (prototype)", &neogeo_ctrl, NULL )
 GAMEB( 2000, mslug3,       neogeo,       neogeo, raster, neogeo,  mslug3,   ROT0, "SNK", "Metal Slug 3 (NGM-2560)", &neogeo_ctrl, NULL ) /* Encrypted Code & GFX */
 GAMEB( 2000, mslug3h,      mslug3,       neogeo, raster, neogeo,  mslug3h,  ROT0, "SNK", "Metal Slug 3 (NGH-2560)", &neogeo_ctrl, NULL ) /* Encrypted GFX */
