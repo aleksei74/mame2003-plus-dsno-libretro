@@ -5568,6 +5568,33 @@ ROM_START( aof3k )
 	ROM_LOAD16_BYTE( "096-c8.c8", 0x1800001, 0x200000, CRC(9a34f99c) SHA1(fca72d95ec42790a7f1e771a1e25dbc5bec5fc19) ) /* Plane 2,3 */
 ROM_END
 
+ROM_START( aof3kr )
+	ROM_REGION( 0x300000, REGION_CPU1, 0 )
+	ROM_LOAD16_WORD_SWAP( "096-p1k.p1",  0x000000, 0x100000, CRC(57ee3b1a) SHA1(60feddffef0315aaabbf9a035a76540e39af45c7) )
+	ROM_LOAD16_WORD_SWAP( "096-p2k.sp2", 0x100000, 0x200000, CRC(9a7b0fd6) SHA1(2ab5e80f155d0f372c2a41b89e9a84bc651504af) )
+
+	NEO_SFIX_128K( "096-s1k.s1", CRC(b6a2699c) SHA1(63ab7c4e26bf93f1059a8954e85d0ebeed0b03bf) )
+
+	NEO_BIOS_SOUND_128K( "096-m1.m1", CRC(cb07b659) SHA1(940b379957c2987d7ab0443cb80c3ff58f6ba559) )
+
+	ROM_REGION( 0x600000, REGION_SOUND1, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "096-v1.v1", 0x000000, 0x200000, CRC(e2c32074) SHA1(69426e7e63fc31a73d1cd056cc9ae6a2c4499407) )
+	ROM_LOAD( "096-v2.v2", 0x200000, 0x200000, CRC(a290eee7) SHA1(e66a98cd9740188bf999992b417f8feef941cede) )
+	ROM_LOAD( "096-v3.v3", 0x400000, 0x200000, CRC(199d12ea) SHA1(a883bf34e685487705a8dafdd0b8db15eb360e80) )
+
+	NO_DELTAT_REGION
+
+	ROM_REGION( 0x1c00000, REGION_GFX3, 0 )
+	ROM_LOAD16_BYTE( "096-c1k.c1", 0x0000000, 0x400000, CRC(edde00a7) SHA1(7032c032c031ee82df8cebcf0821bff409d7c89c) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "096-c2k.c2", 0x0000001, 0x400000, CRC(95319ee0) SHA1(dd41261996a2796284ec80796be2ee922c46a23b) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "096-c3.c3",  0x0800000, 0x400000, CRC(55f9ee1e) SHA1(fbe1b7891beae66c5fcbc7e36168dc1b460ede91) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "096-c4.c4",  0x0800001, 0x400000, CRC(585b7e47) SHA1(d50ea91397fc53d86470ff5b493a44d57c010306) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "096-c5.c5",  0x1000000, 0x400000, CRC(c75a753c) SHA1(fc977f8710816a369a5d0d49ee84059380e93fb7) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "096-c6.c6",  0x1000001, 0x400000, CRC(9a9d2f7a) SHA1(a89a713bfcd93974c9acb21ce699d365b08e7e39) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "096-c7.c7",  0x1800000, 0x200000, CRC(51bd8ab2) SHA1(c8def9c64de64571492b5b7e14b794e3c18f1393) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "096-c8.c8",  0x1800001, 0x200000, CRC(9a34f99c) SHA1(fca72d95ec42790a7f1e771a1e25dbc5bec5fc19) ) /* Plane 2,3 */
+ROM_END
+
 ROM_START( aof3uh )
 	ROM_REGION( 0x300000, REGION_CPU1, 0 )
 	ROM_LOAD16_WORD_SWAP( "096-p1uh.p1", 0x000000, 0x100000, CRC(4d7a053a) SHA1(42efe54c2db7b2e7a3c000f0ccc843aa122d7744) )
@@ -9845,7 +9872,7 @@ ROM_START( kf2k3pcb ) /* Encrypted Set, Decrypted C - JAMMA board */
 	ROM_LOAD16_WORD_SWAP( "271-p3.p3", 0x800000, 0x100000, CRC(5cefd0d2) SHA1(cddc3164629fed4b6f715e12b109ad35d1009355) )
 
 	ROM_REGION( 0x100000, REGION_GFX1, 0 )
-	ROM_FILL( 0x000000, 0x80000, 0 )
+	ROM_FILL( 0x000000, 0x100000, 0 )
 	ROM_REGION( 0x20000, REGION_GFX2, 0 )
 	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
 
@@ -11106,11 +11133,8 @@ DRIVER_INIT( kf2k5uni )
 DRIVER_INIT( kf2k3pcb ) /* Jamama, Single Board */
 {
 	kf2k3pcb_decrypt_68k();
-	kf2k3pcb_gfx_decrypt();
-	kf2k3pcb_sp1_decrypt();
-	kf2k3pcb_decrypt_s1data();
 	neo_pcm2_swap(5);
-	neogeo_fix_bank_type = 2;
+	kf2k3pcb_sp1_decrypt();
 	neogeo_cmc50_m1_decrypt();
 
 	{
@@ -11123,7 +11147,10 @@ DRIVER_INIT( kf2k3pcb ) /* Jamama, Single Board */
 		}
 	}
 
+	neogeo_fix_bank_type = 2;
+	kf2k3pcb_gfx_decrypt();
 	kof2000_neogeo_gfx_decrypt(0x9d);
+	kf2k3pcb_decrypt_s1data();
 	init_neogeo();
 	install_pvc_protection();
 	install_mem_read16_handler( 0, 0xc00000, 0xc7ffff, MRA16_BANK3 );  /* 512k bios */
@@ -11345,6 +11372,7 @@ GAMEB( 2025, rbff1kr,      rbff1,        neogeo, neo320, neogeo,  neogeo,   ROT0
 GAMEB( 2025, rbff1kra,     rbff1,        neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean Translation, bug fix revision)", &neogeo_ctrl, NULL )
 GAMEB( 1996, aof3,         neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Art of Fighting 3 - The Path of the Warrior / Art of Fighting - Ryuuko no Ken Gaiden", &neogeo_ctrl, NULL )
 GAMEB( 2024, aof3k,        aof3,         neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Art of Fighting 3 - The Path of the Warrior (Korean release)", &neogeo_ctrl, NULL )
+GAMEB( 2026, aof3kr,       aof3,         neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Art of Fighting 3 - The Path of the Warrior / Art of Fighting - Ryuuko no Ken Gaiden (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 2024, aof3uh,       aof3,         neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Art of Fighting 3 - The Path of the Warrior / Art of Fighting - Ryuuko no Ken Gaiden (AES Uncensored Hack)", &neogeo_ctrl, NULL )
 GAMEB( 1996, kof96,        neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "The King of Fighters '96 (NGM-214)", &neogeo_ctrl, NULL )
 GAMEB( 1996, kof96a,       kof96,        neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "The King of Fighters '96 (bug fix revision)", &neogeo_ctrl, NULL )

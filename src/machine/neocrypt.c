@@ -2574,8 +2574,8 @@ void kf2k3pcb_sp1_decrypt(void)
 		0x04, 0x00, 0x04, 0x00, 0x0e, 0x0a, 0x0e, 0x0a
 	};
 
-	UINT16 *src= (UINT16*)memory_region( REGION_USER1 );
-	UINT16 *buf= (UINT16*)malloc( 0x80000 / 2 );
+	UINT16 *src = (UINT16*)memory_region( REGION_USER1 );
+	UINT16 *buf = (UINT16*)malloc(0x80000);
 	int i, addr;
 
 	for ( i = 0; i < 0x80000 / 2; i++ )

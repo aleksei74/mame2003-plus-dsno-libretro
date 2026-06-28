@@ -6099,6 +6099,7 @@ Other Sun games
 	DRIVER( rbff1ka )	/* 0095 (c) 1995 SNK */
 	DRIVER( aof3 )		/* 0096 (c) 1996 SNK */
 	DRIVER( aof3k )		/* 0096 (c) 1996 SNK */
+	DRIVER( aof3kr )	/* 0096 (c) 2026 (Korean Translation) SNK */
 	DRIVER( aof3uh )	/* 0096 (c) 2024 (AES Uncensored Hack) SNK */
 	DRIVER( sonicwi3 )	/* 0097 (c) 1995 Video System Co. */
 	DRIVER( froman2b )	/* 0098 (c) 1995 Video System Co. */
