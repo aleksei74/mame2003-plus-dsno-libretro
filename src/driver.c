@@ -6264,6 +6264,7 @@ Other Sun games
 	DRIVER( samsho5 )	/* 0270 (c) 2003 Yuki Enterprises */
 	DRIVER( samsho5a )	/* 0270 (c) 2003 Yuki Enterprises */
 	DRIVER( samsho5h )	/* 0270 (c) 2003 Yuki Enterprises */
+	DRIVER( samsho5k )	/* 0270 (c) 2026 (Korean Translation) Yuki Enterprises */
 	DRIVER( samsho5uh )	/* 0270 (c) 2024 (AES Uncensored Hack) Yuki Enterprises */
 	DRIVER( kf2k3pcb )	/* 0271 (c) 2003 SNK Playmore */
 	DRIVER( kof2003 )	/* 0271 (c) 2003 SNK Playmore */
