@@ -102,6 +102,7 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"mutnat") ||
 		!strcmp(Machine->gamedrv->name,"kotm") ||
 		!strcmp(Machine->gamedrv->name,"kotmh") ||
+		!strcmp(Machine->gamedrv->name,"kotmk") ||
 		!strcmp(Machine->gamedrv->name,"burningf") ||
 		!strcmp(Machine->gamedrv->name,"burningfh") ||
 		!strcmp(Machine->gamedrv->name,"burningfpa") ||
