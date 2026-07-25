@@ -4048,6 +4048,7 @@ BOMULEUL CHAJARA SEGA ST-V  1997/04/11
 	DRIVER( dragoona )
 	DRIVER( dragoonj )	/* GX417 (c) 1995 (Japan) */
 	DRIVER( tbyahhoo )	/* GX424 (c) 1995 (Japan) */
+	DRIVER( tbyahhook )	/* GX424 (c) 2026 Korean Translation (Japan) */
 	DRIVER( tkmmpzdm )	/* GX515 (c) 1995 (Japan) */
 	DRIVER( salmndr2 )	/* GX521 (c) 1996 (Japan) */
 	DRIVER( sexyparo )	/* GX533 (c) 1996 (Japan) */
@@ -6037,6 +6038,7 @@ Other Sun games
 	DRIVER( wh2h )		/* 0057 (c) 1993 ADK */
 	DRIVER( fatfursp )	/* 0058 (c) 1993 SNK */
 	DRIVER( fatfurspa )	/* 0058 (c) 1993 SNK */
+	DRIVER( fatfurspk )	/* 0058 (c) 2026 (Korean Translation) SNK */
 	DRIVER( savagere )	/* 0059 (c) 1995 SNK */
 	DRIVER( fightfev )	/* 0060 (c) 1994 Viccom */
 	DRIVER( fightfeva )	/* 0060 (c) 1994 Viccom */

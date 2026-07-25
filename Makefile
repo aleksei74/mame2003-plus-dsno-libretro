@@ -198,6 +198,9 @@ else ifeq ($(platform), rpi1)
 
 # Raspberry Pi 2
 else ifeq ($(platform), rpi2)
+	CC = arm-linux-gnueabihf-gcc
+	CXX = arm-linux-gnueabihf-g++
+	AR = arm-linux-gnueabihf-ar
 	TARGET = $(TARGET_NAME)_libretro.so
 	fpic = -fPIC
 	CFLAGS += $(fpic)
@@ -211,6 +214,9 @@ else ifeq ($(platform), rpi2)
 
 # Raspberry Pi 3
 else ifeq ($(platform), rpi3)
+	CC = arm-linux-gnueabihf-gcc
+	CXX = arm-linux-gnueabihf-g++
+	AR = arm-linux-gnueabihf-ar
 	TARGET = $(TARGET_NAME)_libretro.so
 	fpic = -fPIC
 	CFLAGS += $(fpic)
@@ -224,6 +230,9 @@ else ifeq ($(platform), rpi3)
 
 # Raspberry Pi 3 (AArch64)
 else ifeq ($(platform), rpi3_64)
+	CC = aarch64-linux-gnu-gcc
+	CXX = aarch64-linux-gnu-g++
+	AR = aarch64-linux-gnu-gcc-ar
 	TARGET = $(TARGET_NAME)_libretro.so
 	fpic = -fPIC
 	CFLAGS += $(fpic)
@@ -235,6 +244,9 @@ else ifeq ($(platform), rpi3_64)
 
 # Raspberry Pi 4
 else ifeq ($(platform), rpi4)
+	CC = arm-linux-gnueabihf-gcc
+	CXX = arm-linux-gnueabihf-g++
+	AR = arm-linux-gnueabihf-ar
 	TARGET = $(TARGET_NAME)_libretro.so
 	fpic = -fPIC
 	CFLAGS += $(fpic)
@@ -248,6 +260,9 @@ else ifeq ($(platform), rpi4)
 
 # Raspberry Pi 4 (AArch64)
 else ifeq ($(platform), rpi4_64)
+	CC = aarch64-linux-gnu-gcc
+	CXX = aarch64-linux-gnu-g++
+	AR = aarch64-linux-gnu-gcc-ar
 	TARGET = $(TARGET_NAME)_libretro.so
 	fpic = -fPIC
 	CFLAGS += $(fpic)
@@ -259,6 +274,9 @@ else ifeq ($(platform), rpi4_64)
 
 # Classic Platforms - NESC, SNESC, C64 mini
 else ifeq ($(platform), classic_armv7_a7)
+	CC = arm-linux-gnueabihf-gcc
+	CXX = arm-linux-gnueabihf-g++
+	AR = arm-linux-gnueabihf-ar
 	TARGET := $(TARGET_NAME)_libretro.so
 	fpic := -fPIC
 	LDFLAGS += $(fpic) -shared -Wl,--version-script=link.T
@@ -278,15 +296,8 @@ else ifeq ($(platform), classic_armv7_a7)
 	CPU_ARCH := arm
 	ARM = 1
 	HAVE_ARMv6 = 1
-	ifeq ($(shell echo `$(CC) -dumpversion` "< 4.9" | bc -l), 1)
-		CFLAGS += -march=armv7-a
-	else
-		CFLAGS += -march=armv7ve
-		# If gcc is 5.0 or later
-		ifeq ($(shell echo `$(CC) -dumpversion` ">= 5" | bc -l), 1)
-			LDFLAGS += -static-libgcc -static-libstdc++
-		endif
-	endif
+	CFLAGS += -march=armv7ve
+	LDFLAGS += -static-libgcc -static-libstdc++
 
 # Amlogic S812
 else ifeq ($(platform), s812)
@@ -312,6 +323,9 @@ else ifeq ($(platform), s812)
 
 # Playstation Classic
 else ifeq ($(platform), classic_armv8_a35)
+	CC = arm-linux-gnueabihf-gcc
+	CXX = arm-linux-gnueabihf-g++
+	AR = arm-linux-gnueabihf-ar
 	TARGET := $(TARGET_NAME)_libretro.so
 	fpic := -fPIC
 	LDFLAGS += $(fpic) -shared -Wl,--version-script=link.T
@@ -333,6 +347,34 @@ else ifeq ($(platform), classic_armv8_a35)
 	HAVE_ARMv6 = 1
 	CFLAGS += -march=armv8-a
 	LDFLAGS += -static-libgcc -static-libstdc++
+
+# Odroid OGS, OGA
+else ifeq ($(platform), odroid_OGA_x64)
+	CC = aarch64-linux-gnu-gcc
+	CXX = aarch64-linux-gnu-g++
+	AR = aarch64-linux-gnu-gcc-ar
+	TARGET := $(TARGET_NAME)_libretro.so
+	fpic := -fPIC
+	CFLAGS += $(fpic)
+	LDFLAGS += $(fpic) -shared -Wl,--version-script=link.T
+	PLATCFLAGS += -mcpu=cortex-a35 -mtune=cortex-a35
+	PLATCFLAGS += -fomit-frame-pointer -ffast-math
+	CXXFLAGS = $(CFLAGS) -fno-rtti -fno-exceptions
+	CPU_ARCH := arm64
+
+# Odroid N2, N2+
+else ifeq ($(platform), odroid_N2_x64)
+	CC = aarch64-linux-gnu-gcc
+	CXX = aarch64-linux-gnu-g++
+	AR = aarch64-linux-gnu-gcc-ar
+	TARGET := $(TARGET_NAME)_libretro.so
+	fpic := -fPIC
+	CFLAGS += $(fpic)
+	LDFLAGS += $(fpic) -shared -Wl,--version-script=link.T
+	PLATCFLAGS += -mcpu=cortex-a73 -mtune=cortex-a73.cortex-a53
+	PLATCFLAGS += -fomit-frame-pointer -ffast-math
+	CXXFLAGS = $(CFLAGS) -fno-rtti -fno-exceptions
+	CPU_ARCH := arm64
 
 # Generic ARM-hf
 else ifeq ($(platform), armhf)
@@ -411,6 +453,9 @@ else ifeq ($(platform), wiiu)
 # Nintendo Switch (libnx)
 else ifeq ($(platform), libnx)
 	include $(DEVKITPRO)/libnx/switch_rules
+	CC = "$(DEVKITPRO)/devkitA64/bin/aarch64-none-elf-gcc$(BINARY_EXT)"
+	CXX = "$(DEVKITPRO)/devkitA64/bin/aarch64-none-elf-g++$(BINARY_EXT)"
+	AR = "$(DEVKITPRO)/devkitA64/bin/aarch64-none-elf-ar$(BINARY_EXT)"
 	EXT=a
 	TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
 	DEFINES := -DSWITCH=1 -U__linux__ -U__linux -DRARCH_INTERNAL -DHAVE_LIBNX

@@ -202,7 +202,7 @@ VIDEO_START(konamigx_5bpp)
 	/* here are some hand tuned per game scroll offsets to go with the per game visible areas,
 	   i see no better way of doing this for now... */
 
-	if (!strcmp(Machine->gamedrv->name,"tbyahhoo"))
+	if (!strcmp(Machine->gamedrv->name,"tbyahhoo") || !strcmp(Machine->gamedrv->name,"tbyahhook"))
 	{
 		K056832_set_UpdateMode(1);
 		gx_tilemode = 1;

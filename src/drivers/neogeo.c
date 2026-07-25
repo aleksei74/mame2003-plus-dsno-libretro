@@ -4108,6 +4108,31 @@ ROM_START( fatfurspa )
 	ROM_LOAD16_BYTE( "058-c6.c6", 0x800001, 0x200000, CRC(8ff1f43d) SHA1(6180ceb5412a3e2e34e9513a3283b9f63087f747) ) /* Plane 2,3 */
 ROM_END
 
+ROM_START( fatfurspk )
+	ROM_REGION( 0x180000, REGION_CPU1, 0 )
+	ROM_LOAD16_WORD_SWAP( "058-p1k.p1",  0x000000, 0x100000, CRC(10eed700) SHA1(0f69535364630e8b8c61013fd1fad74b56302d1c) )
+	ROM_LOAD16_WORD_SWAP( "058-p2k.sp2", 0x100000, 0x080000, CRC(89873fde) SHA1(4e46f2157c16f207bb13fd13ba0618709f938bec) )
+
+	NEO_SFIX_128K( "058-s1k.s1", CRC(672a2c48) SHA1(c5adf20ff9e513b4b317af3e9c0ae9e98cba9aa2) )
+
+	NEO_BIOS_SOUND_128K( "058-m1.m1", CRC(ccc5186e) SHA1(cf9091c523c182aebfb928c91640b2d72fd70123) )
+
+	ROM_REGION( 0x500000, REGION_SOUND1, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "058-v1.v1", 0x000000, 0x200000, CRC(55d7ce84) SHA1(05ac6a395d9bf9166925acca176a8d6129f533c8) )
+	ROM_LOAD( "058-v2.v2", 0x200000, 0x200000, CRC(ee080b10) SHA1(29814fc21bbe30d37745c8918fab00c83a309be4) )
+	ROM_LOAD( "058-v3.v3", 0x400000, 0x100000, CRC(f9eb3d4a) SHA1(d1747f9460b965f6daf4f881ed4ecd04c5253434) )
+
+	NO_DELTAT_REGION
+
+	ROM_REGION( 0xc00000, REGION_GFX3, 0 )
+	ROM_LOAD16_BYTE( "058-c1k.c1", 0x000000, 0x200000, CRC(e0ad29ae) SHA1(2ece7cd3d9a0221cd83db5e72b5bf190ada142b5) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "058-c2k.c2", 0x000001, 0x200000, CRC(7d7f0931) SHA1(5801f71548fbd003f622392c96af6b27d5fcad37) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "058-c3k.c3", 0x400000, 0x200000, CRC(3b203a16) SHA1(ac2106b2189c46bebc3327578ef92975ef71e6c8) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "058-c4k.c4", 0x400001, 0x200000, CRC(d3f30fc1) SHA1(5c545e9454fa3919bdaa54dec9b267eaed387960) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "058-c5.c5",  0x800000, 0x200000, CRC(49c5e0bf) SHA1(f3784178f90751990ea47a082a6aa869ee3566c9) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "058-c6.c6",  0x800001, 0x200000, CRC(8ff1f43d) SHA1(6180ceb5412a3e2e34e9513a3283b9f63087f747) ) /* Plane 2,3 */
+ROM_END
+
 ROM_START( savagere )
 	ROM_REGION( 0x200000, REGION_CPU1, 0 )
 	ROM_LOAD16_WORD_SWAP( "059-p1.p1", 0x100000, 0x100000, CRC(01d4e9c0) SHA1(3179d2be59bf2de6918d506117cff50acf7e09f3) )
@@ -11400,6 +11425,7 @@ GAMEB( 1994, aof2a,        aof2,         neogeo, neogeo, neogeo,  neogeo,   ROT0
 GAMEB( 2026, aof2k,        aof2,         neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Art of Fighting 2 / Ryuuko no Ken 2 (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 1993, fatfursp,     neogeo,       neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Fatal Fury Special / Garou Densetsu Special (NGM-058 ~ NGH-058, set 1)", &neogeo_ctrl, NULL )
 GAMEB( 1993, fatfurspa,    fatfursp,     neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Fatal Fury Special / Garou Densetsu Special (NGM-058 ~ NGH-058, set 2)", &neogeo_ctrl, NULL )
+GAMEB( 2026, fatfurspk,    fatfursp,     neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Fatal Fury Special / Garou Densetsu Special (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 1995, savagere,     neogeo,       neogeo, neogeo, neogeo,  neogeo,   ROT0, "SNK", "Savage Reign / Fu'un Mokushiroku - Kakutou Sousei", &neogeo_ctrl, NULL )
 GAMEB( 1994, ssideki2,     neogeo,       neogeo, ras320, neogeo,  neogeo,   ROT0, "SNK", "Super Sidekicks 2 - The World Championship / Tokuten Ou 2 - Real Fight Football (NGM-061 ~ NGH-061)", &neogeo_ctrl, NULL )
 GAMEB( 1994, samsho2,      neogeo,       neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (NGM-063 ~ NGH-063)", &neogeo_ctrl, NULL )

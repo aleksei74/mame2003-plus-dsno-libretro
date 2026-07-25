@@ -2545,6 +2545,36 @@ ROM_START( tbyahhoo )
 	ROM_LOAD( "424a18.7g", 0x200000, 2*1024*1024, CRC(0f0d9f3a) SHA1(57f6b113b80f06964b7e672ad517c1654c5569c5) )
 ROM_END
 
+/* Twinbee Yahoo! */
+ROM_START( tbyahhook )
+	/* main program */
+	ROM_REGION( 0x300000, REGION_CPU1, 0 )
+	GX_BIOS
+	ROM_LOAD32_WORD_SWAP( "426jaa02k.31b", 0x200002, 512*1024, CRC(bc790cef) SHA1(afd95d40e03cfdc95f572b6e0432cc6604b3c6a2) )
+	ROM_LOAD32_WORD_SWAP( "424jaa04k.27b", 0x200000, 512*1024, CRC(d553fd5c) SHA1(1069039c77252f7acaa792e940648ecbba0be966) )
+
+	/* sound program */
+	ROM_REGION( 0x40000, REGION_CPU2, 0 )
+	ROM_LOAD16_BYTE("424a06.9c", 0x000000, 128*1024, CRC(a4760e14) SHA1(78dbd309f3f7fa61e92c9554e594449a7d4eed5a) )
+	ROM_LOAD16_BYTE("424a07.7c", 0x000001, 128*1024, CRC(fa90d7e2) SHA1(6b6dee29643309005834416bdfdb18d74f34cb1b) )
+
+	/* tiles */
+	ROM_REGION( 0x500000, REGION_GFX1, ROMREGION_ERASE00 )
+	TILE_WORD_ROM_LOAD( "424a14k.17h", 0x000000, 2*1024*1024, CRC(95c666d0) SHA1(12c3727d1af1611622cbd811e5a8399f9777cf4f) )
+	TILE_BYTE_ROM_LOAD( "424a12k.13g", 0x000004, 512*1024, CRC(4a7c489f) SHA1(a4ce2aa015e4de1a7c8bc2759fd3f1cbf1acaa94) )
+
+	/* sprites */
+	ROM_REGION( 0x500000, REGION_GFX2, ROMREGION_ERASE00 )
+	ROM_LOAD32_WORD( "424a11k.25g", 0x000000, 2*1024*1024, CRC(2f96de9f) SHA1(a728abc24847b63e301a3cf73d04b29ac9d2d674) )
+	ROM_LOAD32_WORD( "424a10k.28g", 0x000002, 2*1024*1024, CRC(e7bcd822) SHA1(42baf450d2441da40d6dd79c5eda0d6552e77348) )
+	ROM_LOAD( "424a09k.30g", 0x400000, 1*1024*1024, CRC(dcae531c) SHA1(c222747835c1a0d7f090c8b8548c2f7bf77497d0) )
+
+	/* sound data */
+	ROM_REGION( 0x400000, REGION_SOUND1, 0 )
+	ROM_LOAD( "424a17.9g", 0x000000, 2*1024*1024, CRC(e9dd9692) SHA1(c289019c8d1dd71b3cec26479c39b649de804707) )
+	ROM_LOAD( "424a18.7g", 0x200000, 2*1024*1024, CRC(0f0d9f3a) SHA1(57f6b113b80f06964b7e672ad517c1654c5569c5) )
+ROM_END
+
 /* Daisu-Kiss */
 ROM_START( daiskiss )
 	/* main program */
@@ -3454,7 +3484,7 @@ static DRIVER_INIT(konamigx)
 		konamigx_cfgport = 7;
 	}
 
-	else if (!strcmp(Machine->gamedrv->name, "tbyahhoo"))
+	else if (!strcmp(Machine->gamedrv->name, "tbyahhoo") || !strcmp(Machine->gamedrv->name, "tbyahhook"))
 	{
 		#if GX_SKIPIDLE
 			ADD_SKIPPER32(0x297b9a, 0xc00000, 0xf800, 0xf800, 0, 0xffff0000)
@@ -3625,6 +3655,7 @@ GAMEX( 1994, gokuparo, konamigx, konamigx, gokuparo, konamigx, ROT0, "Konami", "
 GAMEX( 1994, fantjour, gokuparo, konamigx, gokuparo, konamigx, ROT0, "Konami", "Fantastic Journey", GAME_IMPERFECT_GRAPHICS )
 GAMEX( 1994, puzldama, konamigx, konamigx, puzldama, konamigx, ROT0, "Konami", "Taisen Puzzle-dama (ver JAA)", GAME_IMPERFECT_GRAPHICS )
 GAMEX( 1995, tbyahhoo, konamigx, konamigx, gokuparo, konamigx, ROT0, "Konami", "Twin Bee Yahhoo! (ver JAA)", GAME_IMPERFECT_GRAPHICS )
+GAMEX( 2026, tbyahhook, tbyahhoo, konamigx, gokuparo, konamigx, ROT0, "Konami", "Twin Bee Yahhoo! (ver JAA, Korean Translation)", GAME_IMPERFECT_GRAPHICS )
 GAMEX( 1995, tkmmpzdm, konamigx, konamigx_6bpp, puzldama, konamigx, ROT0, "Konami", "Tokimeki Memorial Taisen Puzzle-dama (ver JAB)", GAME_IMPERFECT_GRAPHICS )
 GAMEX( 1995, dragoona, konamigx, dragoonj, dragoonj, konamigx, ROT0, "Konami", "Dragoon Might (ver AAB)", GAME_IMPERFECT_GRAPHICS )
 GAMEX( 1995, dragoonj, dragoona, dragoonj, dragoonj, konamigx, ROT0, "Konami", "Dragoon Might (ver JAA)", GAME_IMPERFECT_GRAPHICS )
