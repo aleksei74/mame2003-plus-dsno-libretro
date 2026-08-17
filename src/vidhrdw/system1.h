@@ -29,6 +29,7 @@ extern size_t system1_backgroundram_size;
 
 VIDEO_START( system1 );
 void system1_define_background_memory(int Mode);
+void system1_set_extended_bg_tiles(int enable);
 
 READ_HANDLER( wbml_videoram_bank_latch_r );
 WRITE_HANDLER( wbml_videoram_bank_latch_w );

@@ -35,6 +35,7 @@ static MACHINE_INIT( system1 )
 /*	memory_region(REGION_CPU1)[0xefff] = 0x4b;*/
 
 	system1_define_background_memory(system1_BACKGROUND_MEMORY_SINGLE);
+	system1_set_extended_bg_tiles(0);
 }
 
 static MACHINE_INIT( wbml )
@@ -46,6 +47,13 @@ static MACHINE_INIT( wbml )
 /*	memory_region(REGION_CPU1)[0xefff] = 0x4b;*/
 
 	system1_define_background_memory(system1_BACKGROUND_MEMORY_BANKED);
+	system1_set_extended_bg_tiles(0);
+}
+
+static MACHINE_INIT( wbmlk )
+{
+	system1_define_background_memory(system1_BACKGROUND_MEMORY_BANKED);
+	system1_set_extended_bg_tiles(1);
 }
 
 /* Noboranka: there seems to be some protection? involving reads / writes to ports in the 2x region*/
@@ -2524,6 +2532,13 @@ static MACHINE_DRIVER_START( wbml )
 
 MACHINE_DRIVER_END
 
+static MACHINE_DRIVER_START( wbmlk )
+
+	MDRV_IMPORT_FROM( wbml )
+	MDRV_MACHINE_INIT(wbmlk)
+
+MACHINE_DRIVER_END
+
 static MACHINE_DRIVER_START( noboranb )
 
 	/* basic machine hardware */
@@ -4093,34 +4108,64 @@ ROM_START( wbmljb )
 	ROM_LOAD( "pr5317.37",    0x0300, 0x0100, CRC(648350b8) SHA1(c7986aa9127ef5b50b845434cb4e81dff9861cd2) ) /* timing? (not used) */
 ROM_END
 
-ROM_START( wbmlkb )
-	ROM_REGION( 2*0x20000, REGION_CPU1, 0 ) /* 256k for code + 256k for decrypted opcodes */
-	ROM_LOAD( "wbml.01",      0x20000, 0x8000, CRC(66482638) SHA1(887f93015f0effa2d0fa1f1f59082f75ac072221) ) /* Unencrypted opcodes */
-	ROM_CONTINUE(             0x00000, 0x8000 )             /* Now load the operands in RAM */
-	ROM_LOAD( "m-6k.bin",     0x30000, 0x8000, CRC(7dd0b45a) SHA1(ae715437c225013bade54cf021be708c5145a84f) ) /* Unencrypted opcodes */
-	ROM_CONTINUE(             0x10000, 0x8000 )
-	ROM_LOAD( "m-7.bin",      0x38000, 0x8000, CRC(11881703) SHA1(b5e4d477158e7653b0fef5a4806be7b4871e917d) ) /* Unencrypted opcodes */
-	ROM_CONTINUE(             0x18000, 0x8000 )
+ROM_START( wbmldk )
+	ROM_REGION( 2*0x20000, REGION_CPU1, 0 ) /* decrypted code mirrored for opcode fetches */
+	ROM_LOAD( "decrypted_epr-11031ak.90", 0x00000, 0x8000, CRC(948cbf4c) SHA1(bbd0f5ac2e80d835b408d2c4fc7dcd56959fa29e) )
+	ROM_RELOAD(                             0x20000, 0x8000 )
+	ROM_LOAD( "decrypted_epr-11032k.91",  0x10000, 0x8000, CRC(1898880e) SHA1(5c3b96841ee289a323a6395052ed1764b635a701) )
+	ROM_RELOAD(                             0x30000, 0x8000 )
+	ROM_LOAD( "decrypted_epr-11033.92",   0x18000, 0x8000, CRC(39e07286) SHA1(70192f03e52dd34c9fe5698a5ec1c24d3c58543c) )
+	ROM_RELOAD(                             0x38000, 0x8000 )
 
-	ROM_REGION( 0x10000, REGION_CPU2, 0 ) /* 64k for sound cpu */
+	ROM_REGION( 0x10000, REGION_CPU2, 0 )
 	ROM_LOAD( "epr11037.126", 0x0000, 0x8000, CRC(7a4ee585) SHA1(050436106cced5dcbf40a3d94d48202eedddc3ad) )
 
-	ROM_REGION( 0x18000, REGION_GFX1, ROMREGION_DISPOSE )
-	ROM_LOAD( "epr11034k.4",  0x00000, 0x8000, CRC(7e631c73) SHA1(ef7bc9c8b15083680f8169fa8d322cfbfa7d54ac) )
-	ROM_LOAD( "epr11035k.5",  0x08000, 0x8000, CRC(4c67a9a6) SHA1(eac1f97aac3f5b0ce96dd082c7741033caa4b55b) )
-	ROM_LOAD( "epr11036k.6",  0x10000, 0x8000, CRC(0440b0c7) SHA1(f0e321dc6c979807852c375c8a6905fd32336dde) )
+	ROM_REGION( 0x60000, REGION_GFX1, ROMREGION_DISPOSE )
+	ROM_LOAD( "epr-11034k.4", 0x00000, 0x20000, CRC(b1e99f88) SHA1(1438d37de8e7a6871ecc8aee768e36d4135c9cd8) )
+	ROM_LOAD( "epr-11035k.5", 0x20000, 0x20000, CRC(fad6d391) SHA1(fa9db6cc11e11e57a413309a1442c6c81592f6f7) )
+	ROM_LOAD( "epr-11036k.6", 0x40000, 0x20000, CRC(e5b7dd2c) SHA1(54437c66b1fdf5a387fae04793501e86634cf59d) )
 
-	ROM_REGION( 0x20000, REGION_GFX2, 0 ) /* 128k for sprites data */
-	ROM_LOAD( "epr11028.87",  0x00000, 0x8000, CRC(af0b3972) SHA1(413825f66b84c7e45aa1855131482abead8f7f3b) )
-	ROM_LOAD( "epr11027.86",  0x08000, 0x8000, CRC(277d8f1d) SHA1(7854673503ed03d276abe971805a11f8c992f6d6) )
-	ROM_LOAD( "epr11030.89",  0x10000, 0x8000, CRC(f05ffc76) SHA1(f3dbb518240f86430840c3d4cda04bac79c20f69) )
-	ROM_LOAD( "epr11029.88",  0x18000, 0x8000, CRC(cedc9c61) SHA1(dbe5744f9b6f2a406b52b910dd4e133db7bce6b2) )
+	ROM_REGION( 0x20000, REGION_GFX2, 0 )
+	ROM_LOAD( "epr11028.87", 0x00000, 0x8000, CRC(af0b3972) SHA1(413825f66b84c7e45aa1855131482abead8f7f3b) )
+	ROM_LOAD( "epr11027.86", 0x08000, 0x8000, CRC(277d8f1d) SHA1(7854673503ed03d276abe971805a11f8c992f6d6) )
+	ROM_LOAD( "epr11030.89", 0x10000, 0x8000, CRC(f05ffc76) SHA1(f3dbb518240f86430840c3d4cda04bac79c20f69) )
+	ROM_LOAD( "epr11029.88", 0x18000, 0x8000, CRC(cedc9c61) SHA1(dbe5744f9b6f2a406b52b910dd4e133db7bce6b2) )
 
 	ROM_REGION( 0x0400, REGION_PROMS, 0 )
-	ROM_LOAD( "pr11026.20",   0x0000, 0x0100, CRC(27057298) SHA1(654be7abb937bb0720263ee6512e31194662effe) )
-	ROM_LOAD( "pr11025.14",   0x0100, 0x0100, CRC(41e4d86b) SHA1(a86e8bb0a465d01b04410edfbb82eb96f12b909f) )
-	ROM_LOAD( "pr11024.8",    0x0200, 0x0100, CRC(08d71954) SHA1(df045dbfb3d669e4d42fbdba1e7191cd046f7b47) )
-	ROM_LOAD( "pr5317.37",    0x0300, 0x0100, CRC(648350b8) SHA1(c7986aa9127ef5b50b845434cb4e81dff9861cd2) ) /* timing? (not used) */
+	ROM_LOAD( "pr11026.20", 0x0000, 0x0100, CRC(27057298) SHA1(654be7abb937bb0720263ee6512e31194662effe) )
+	ROM_LOAD( "pr11025.14", 0x0100, 0x0100, CRC(41e4d86b) SHA1(a86e8bb0a465d01b04410edfbb82eb96f12b909f) )
+	ROM_LOAD( "pr11024.8",  0x0200, 0x0100, CRC(08d71954) SHA1(df045dbfb3d669e4d42fbdba1e7191cd046f7b47) )
+	ROM_LOAD( "pr5317.37",  0x0300, 0x0100, CRC(648350b8) SHA1(c7986aa9127ef5b50b845434cb4e81dff9861cd2) )
+ROM_END
+
+ROM_START( wbmlkod )
+	ROM_REGION( 2*0x20000, REGION_CPU1, 0 ) /* decrypted code mirrored for opcode fetches */
+	ROM_LOAD( "decrypted_epr-11031k.90", 0x00000, 0x8000, CRC(ab23a444) SHA1(32e14aa7af8ec6396b8a0d3bdea23aa8251655f4) )
+	ROM_RELOAD(                            0x20000, 0x8000 )
+	ROM_LOAD( "decrypted_epr-11032k.91", 0x10000, 0x8000, CRC(1898880e) SHA1(5c3b96841ee289a323a6395052ed1764b635a701) )
+	ROM_RELOAD(                            0x30000, 0x8000 )
+	ROM_LOAD( "decrypted_epr-11033.92",  0x18000, 0x8000, CRC(39e07286) SHA1(70192f03e52dd34c9fe5698a5ec1c24d3c58543c) )
+	ROM_RELOAD(                            0x38000, 0x8000 )
+
+	ROM_REGION( 0x10000, REGION_CPU2, 0 )
+	ROM_LOAD( "epr11037.126", 0x0000, 0x8000, CRC(7a4ee585) SHA1(050436106cced5dcbf40a3d94d48202eedddc3ad) )
+
+	ROM_REGION( 0x60000, REGION_GFX1, ROMREGION_DISPOSE )
+	ROM_LOAD( "epr-11034k.4", 0x00000, 0x20000, CRC(b1e99f88) SHA1(1438d37de8e7a6871ecc8aee768e36d4135c9cd8) )
+	ROM_LOAD( "epr-11035k.5", 0x20000, 0x20000, CRC(fad6d391) SHA1(fa9db6cc11e11e57a413309a1442c6c81592f6f7) )
+	ROM_LOAD( "epr-11036k.6", 0x40000, 0x20000, CRC(e5b7dd2c) SHA1(54437c66b1fdf5a387fae04793501e86634cf59d) )
+
+	ROM_REGION( 0x20000, REGION_GFX2, 0 )
+	ROM_LOAD( "epr11028.87", 0x00000, 0x8000, CRC(af0b3972) SHA1(413825f66b84c7e45aa1855131482abead8f7f3b) )
+	ROM_LOAD( "epr11027.86", 0x08000, 0x8000, CRC(277d8f1d) SHA1(7854673503ed03d276abe971805a11f8c992f6d6) )
+	ROM_LOAD( "epr11030.89", 0x10000, 0x8000, CRC(f05ffc76) SHA1(f3dbb518240f86430840c3d4cda04bac79c20f69) )
+	ROM_LOAD( "epr11029.88", 0x18000, 0x8000, CRC(cedc9c61) SHA1(dbe5744f9b6f2a406b52b910dd4e133db7bce6b2) )
+
+	ROM_REGION( 0x0400, REGION_PROMS, 0 )
+	ROM_LOAD( "pr11026.20", 0x0000, 0x0100, CRC(27057298) SHA1(654be7abb937bb0720263ee6512e31194662effe) )
+	ROM_LOAD( "pr11025.14", 0x0100, 0x0100, CRC(41e4d86b) SHA1(a86e8bb0a465d01b04410edfbb82eb96f12b909f) )
+	ROM_LOAD( "pr11024.8",  0x0200, 0x0100, CRC(08d71954) SHA1(df045dbfb3d669e4d42fbdba1e7191cd046f7b47) )
+	ROM_LOAD( "pr5317.37",  0x0300, 0x0100, CRC(648350b8) SHA1(c7986aa9127ef5b50b845434cb4e81dff9861cd2) )
 ROM_END
 
 ROM_START( wbmlb )
@@ -4451,12 +4496,13 @@ GAME( 1986, noboranb, 0,        noboranb, noboranb, noboranb, ROT270, "bootleg",
 GAMEX(1987, blockgal, 0,        blockgal, blockgal, 0,        ROT90,  "Sega / Vic Tokai",	   "Block Gal", GAME_NOT_WORKING | GAME_NO_COCKTAIL )
 GAMEX(1987, blckgalb, blockgal, blockgal, blockgal, bootleg,  ROT90,  "bootleg", 		 	   "Block Gal (bootleg)", GAME_NO_COCKTAIL )
 GAMEX(1987, tokisens, 0,        wbml,     tokisens, 0,        ROT90,  "Sega", 			 	   "Toki no Senshi - Chrono Soldier", GAME_NO_COCKTAIL )
-GAMEX(1987, wbml,     0,        wbml,     wbml,     wbml,     ROT0,   "Sega / Westone",  "Wonder Boy in Monster Land (Japan New Ver.)", GAME_NO_COCKTAIL )
-GAMEX(1987, wbmljo,   wbml,     wbml,     wbml,     wbml,     ROT0,   "Sega / Westone",  "Wonder Boy in Monster Land (Japan Old Ver.)", GAME_NO_COCKTAIL )
-GAMEX(1987, wbmljb,   wbml,     wbml,     wbml,     bootleg,  ROT0,   "bootleg", 		     "Wonder Boy in Monster Land (Japan not encrypted)", GAME_NO_COCKTAIL )
-GAMEX(1987, wbmlkb,   wbml,     wbml,     wbml,     bootleg,  ROT0,   "bootleg", 		     "Wonder Boy in Monster Land (Korean Translation)", GAME_NO_COCKTAIL )
-GAMEX(1987, wbmlb,    wbml,     wbml,     wbml,     bootleg,  ROT0,   "bootleg", 		     "Wonder Boy in Monster Land", GAME_NO_COCKTAIL )
-GAMEX(2009, wbmlvc,   wbml,     wbml,     wbml,     bootleg,  ROT0,   "Sega / Westone",  "Wonder Boy in Monster Land (English, Virtual Console)", GAME_NO_COCKTAIL )
+GAMEX(1987, wbml,     0,        wbml,     wbml,     wbml,     ROT0,   "Sega / Westone",        "Wonder Boy in Monster Land (Japan New Ver.)", GAME_NO_COCKTAIL )
+GAMEX(1987, wbmljo,   wbml,     wbml,     wbml,     wbml,     ROT0,   "Sega / Westone",        "Wonder Boy in Monster Land (Japan Old Ver.)", GAME_NO_COCKTAIL )
+GAMEX(1987, wbmljb,   wbml,     wbml,     wbml,     bootleg,  ROT0,   "bootleg", 		       "Wonder Boy in Monster Land (Japan not encrypted)", GAME_NO_COCKTAIL )
+GAMEX(2026, wbmldk,   wbml,     wbmlk,    wbml,     bootleg,  ROT0,   "bootleg", 		       "Wonder Boy in Monster Land (Korea not encrypted New Ver)", GAME_NO_COCKTAIL )
+GAMEX(2026, wbmlkod,  wbml,     wbmlk,    wbml,     bootleg,  ROT0,   "bootleg", 		       "Wonder Boy in Monster Land (Korea not encrypted Old Ver)", GAME_NO_COCKTAIL )
+GAMEX(1987, wbmlb,    wbml,     wbml,     wbml,     bootleg,  ROT0,   "bootleg", 		       "Wonder Boy in Monster Land", GAME_NO_COCKTAIL )
+GAMEX(2009, wbmlvc,   wbml,     wbml,     wbml,     bootleg,  ROT0,   "Sega / Westone",        "Wonder Boy in Monster Land (English, Virtual Console)", GAME_NO_COCKTAIL )
 GAMEX(1987, dakkochn, 0,        chplft,   chplft,   0,        ROT0,   "Sega", 			 	   "DakkoChan Jansoh", GAME_NOT_WORKING | GAME_NO_COCKTAIL )
 GAMEX(1988, ufosensi, 0,        ufosensi, ufosensi, ufosensi, ROT0,   "Sega", 			 	   "Ufo Senshi Yohko Chan", GAME_NO_COCKTAIL )
 GAMEX(1988, ufosensb, ufosensi, ufosensi, ufosensi, bootleg,  ROT0,   "bootleg", 			   "Ufo Senshi Yohko Chan (not encrypted)", GAME_NO_COCKTAIL )

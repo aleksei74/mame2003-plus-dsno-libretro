@@ -33,6 +33,7 @@ static const unsigned char *system1_color_prom;
 
 static unsigned char *wbml_paged_videoram;
 static unsigned char wbml_videoram_bank=0,wbml_videoram_bank_latch=0;
+static int wbml_extended_bg_tiles;
 
 static int blockgal_kludgeoffset;
 
@@ -811,6 +812,36 @@ WRITE_HANDLER( wbml_paged_videoram_w )
 	wbml_paged_videoram[0x1000*wbml_videoram_bank + offset] = data;
 }
 
+void system1_set_extended_bg_tiles(int enable)
+{
+	wbml_extended_bg_tiles = enable;
+}
+
+static void wbml_get_tile_info(int tiledata, int background, int *code, int *color)
+{
+	int tilecode;
+	int tilecolor;
+
+	if (wbml_extended_bg_tiles && (tiledata & 0x6000) == 0x4000)
+	{
+		tilecode = 0x2000 | (tiledata & 0x01ff);
+		tilecolor = 0x38 | ((tiledata >> 9) & 0x03) | ((tiledata >> 10) & 0x04);
+	}
+	else
+	{
+		tilecode = ((tiledata >> 4) & 0x800) | (tiledata & 0x7ff);
+		if (wbml_extended_bg_tiles)
+			tilecode |= (tiledata & 0x6000) >> 1;
+
+		tilecolor = (tiledata >> 5) & 0x3f;
+		if (wbml_extended_bg_tiles && tilecode >= 0x1000 && tilecode < 0x2000)
+			tilecolor = 0;
+	}
+
+	*code = tilecode;
+	*color = tilecolor + (background ? 0x40 : 0);
+}
+
 static void wbml_draw_bg(struct mame_bitmap *bitmap, int trasp)
 {
 	int page;
@@ -831,7 +862,7 @@ static void wbml_draw_bg(struct mame_bitmap *bitmap, int trasp)
 		{
 			for( col=0; col<32*8; col+=8 )
 			{
-				int code,priority;
+				int code,color,priority;
 				int x = (startx+col) & 0x1ff;
 				int y = (starty+row) & 0x1ff;
 				if (x > 256) x -= 512;
@@ -845,19 +876,19 @@ static void wbml_draw_bg(struct mame_bitmap *bitmap, int trasp)
 
 				code = source[0] + (source[1] << 8);
 				priority = code & 0x800;
-				code = ((code >> 4) & 0x800) | (code & 0x7ff);
+				wbml_get_tile_info(code, 1, &code, &color);
 
 				if (!trasp)
 					drawgfx(bitmap,Machine->gfx[0],
 							code,
-							((code >> 5) & 0x3f) + 64,
+							color,
 							flip_screen,flip_screen,
 							x,y,
 							&Machine->visible_area, TRANSPARENCY_NONE, 0);
 				else if (priority)
 					drawgfx(bitmap,Machine->gfx[0],
 							code,
-							((code >> 5) & 0x3f) + 64,
+							color,
 							flip_screen,flip_screen,
 							x,y,
 							&Machine->visible_area, TRANSPARENCY_PEN, 0);
@@ -875,13 +906,13 @@ static void wbml_draw_fg(struct mame_bitmap *bitmap)
 
 	for (offs = 0;offs < 0x700;offs += 2)
 	{
-		int sx,sy,code;
+		int sx,sy,code,color;
 
 
 		sx = (offs/2) % 32;
 		sy = (offs/2) / 32;
 		code = wbml_paged_videoram[offs] | (wbml_paged_videoram[offs+1] << 8);
-		code = ((code >> 4) & 0x800) | (code & 0x7ff);
+		wbml_get_tile_info(code, 0, &code, &color);
 
 		if (flip_screen)
 		{
@@ -891,7 +922,7 @@ static void wbml_draw_fg(struct mame_bitmap *bitmap)
 
 		drawgfx(bitmap,Machine->gfx[0],
 				code,
-				(code >> 5) & 0x3f,
+				color,
 				flip_screen,flip_screen,
 				8*sx,8*sy,
 				&Machine->visible_area,TRANSPARENCY_PEN,0);

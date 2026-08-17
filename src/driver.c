@@ -2965,7 +2965,8 @@ V-V                           TP-027
 	DRIVER( wbml )		/* bootleg (S2) */
 	DRIVER( wbmljo )	/* (c) 1987 Sega/Westone (S2) */
 	DRIVER( wbmljb )	/* (c) 1987 Sega/Westone (S2) */
-	DRIVER( wbmlkb )	/* (c) 1987 Sega/Westone (Korean Translation) */
+	DRIVER( wbmldk )	/* 2026 Korean Translation (New Ver.) */
+	DRIVER( wbmlkod )	/* 2026 Korean Translation (Old Ver.) */
 	DRIVER( wbmlvc )	/* (c) 2009 Sega/Westone Virtual Console English Version */
 	DRIVER( wbmlb )		/* bootleg? (S2) */
 	DRIVER( dakkochn )	/* 836-6483? (S2) */
@@ -5982,6 +5983,7 @@ Other Sun games
 	DRIVER( minasan )	/* 0027 (c) 1990 Monolith Corp. */
 	/* 0028 Dunk Star (prototype) Sammy */
 	DRIVER( legendos )	/* 0029 (c) 1991 SNK */
+	DRIVER( legendosk )	/* 0029 (c) 2026 (Korean Translation) SNK */
 	DRIVER( 2020bb )	/* 0030 (c) 1991 SNK / Pallas */
 	DRIVER( 2020bba )	/* 0030 (c) 1991 SNK / Pallas */
 	DRIVER( 2020bbh )	/* 0030 (c) 1991 SNK / Pallas */
@@ -6057,6 +6059,7 @@ Other Sun games
 	DRIVER( gururin )	/* 0067 (c) 1994 Face */
 	DRIVER( pspikes2 )	/* 0068 (c) 1994 Video System Co. */
 	DRIVER( fatfury3 )	/* 0069 (c) 1995 SNK */
+	DRIVER( fatfury3k )	/* 0069 (c) 2026 (Korean Translation) SNK */
 	DRIVER( zupapa )	/* 0070 (c) SNK */
 	DRIVER( b2b )     /* 0071 Bang Bang Busters 1994 Visco */
 	/* 0072 Last Odyssey Pinball Fantasia (prototype) 1995 Monolith */
@@ -6142,6 +6145,7 @@ Other Sun games
 	DRIVER( samsho4uh )	/* 0222 (c) 2024 (AES Uncensored Hack) SNK */
 	DRIVER( rbffspec )	/* 0223 (c) 1996 SNK */
 	DRIVER( rbffspeck )	/* 0223 (c) 1996 SNK */
+	DRIVER( rbffspeckr )	/* 0223 (c) 2026 (Korean Translation) SNK */
 	DRIVER( rbffspecuh )	/* 0223 (c) 2024 (AES Uncensored Hack) SNK */
 	DRIVER( twinspri )	/* 0224 (c) 1996 ADK */
 	DRIVER( wakuwak7 )	/* 0225 (c) 1996 Sunsoft */
@@ -6281,7 +6285,9 @@ Other Sun games
 	DRIVER( samsh5sp )	/* 0272 (c) 2003 Yuki Enterprises */
 	DRIVER( samsh5sph )	/* 0272 (c) 2003 Yuki Enterprises */
 	DRIVER( samsh5spho )	/* 0272 (c) 2003 Yuki Enterprises */
+	DRIVER( samsh5spk )	/* 0272 (c) 2026 (Korean Translation) Yuki Enterprises */
 	DRIVER( samsh5spuh )	/* 0272 (c) 2024 (AES Uncensored Hack) Yuki Enterprises */
+	DRIVER( samsh5pfk )	/* 0273 (c) 2026 (Korean Translation) Yuki Enterprises */
 	DRIVER( lasthope )	/* (c) 2005 NG:DEV.TEAM */
 	DRIVER( knightsch )	/* (c) 2014 Neobitz */
 	DRIVER( xeno )	/* (c) 2019 Bitmap Bureau */

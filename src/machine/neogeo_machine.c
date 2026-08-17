@@ -588,13 +588,18 @@ static void neogeo_custom_memory(void)
 	/* we write protect a SRAM location so it cannot be set to 1 */
 	sram_protection_hack = ~0;
 	if (	!strcmp(Machine->gamedrv->name,"fatfury3") ||
+			!strcmp(Machine->gamedrv->name,"fatfury3k") ||
 			!strcmp(Machine->gamedrv->name,"samsho5") ||
 			!strcmp(Machine->gamedrv->name,"samsho5a") ||
 			!strcmp(Machine->gamedrv->name,"samsho5h") ||
 			!strcmp(Machine->gamedrv->name,"samsho5k") ||
 			!strcmp(Machine->gamedrv->name,"samsho5uh") ||
 			!strcmp(Machine->gamedrv->name,"samsh5sp") ||
+			!strcmp(Machine->gamedrv->name,"samsh5sph") ||
+			!strcmp(Machine->gamedrv->name,"samsh5spho") ||
+			!strcmp(Machine->gamedrv->name,"samsh5spk") ||
 			!strcmp(Machine->gamedrv->name,"samsh5spuh") ||
+			!strcmp(Machine->gamedrv->name,"samsh5pfk") ||
 			!strcmp(Machine->gamedrv->name,"samsho3") ||
 			!strcmp(Machine->gamedrv->name,"samsho3h") ||
 			!strcmp(Machine->gamedrv->name,"fswords") ||
@@ -617,6 +622,7 @@ static void neogeo_custom_memory(void)
 			!strcmp(Machine->gamedrv->name,"rbff1kra") ||
 			!strcmp(Machine->gamedrv->name,"rbffspec") ||
 			!strcmp(Machine->gamedrv->name,"rbffspeck") ||
+			!strcmp(Machine->gamedrv->name,"rbffspeckr") ||
 			!strcmp(Machine->gamedrv->name,"rbffspecuh") ||
 			!strcmp(Machine->gamedrv->name,"kof95") ||
 			!strcmp(Machine->gamedrv->name,"kof95a") ||
@@ -709,7 +715,7 @@ static void neogeo_custom_memory(void)
 		install_mem_write16_handler(0, 0x200000, 0x2fffff, fatfury2_protection_16_w);
 	}
 
-	if (!strcmp(Machine->gamedrv->name,"fatfury3"))
+	if (!strcmp(Machine->gamedrv->name,"fatfury3") || !strcmp(Machine->gamedrv->name,"fatfury3k"))
 	{
 		/* patch the first word, it must be 0x0010 not 0x0000 (initial stack pointer) */
 		data16_t *mem16 = (data16_t *)memory_region(REGION_CPU1);

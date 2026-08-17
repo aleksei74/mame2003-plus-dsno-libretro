@@ -118,6 +118,7 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"lresort") ||
 		!strcmp(Machine->gamedrv->name,"lresortp") ||
 		!strcmp(Machine->gamedrv->name,"legendos") ||
+		!strcmp(Machine->gamedrv->name,"legendosk") ||
 		!strcmp(Machine->gamedrv->name,"2020bb") ||
 		!strcmp(Machine->gamedrv->name,"2020bba") ||
 		!strcmp(Machine->gamedrv->name,"2020bbh") ||
@@ -242,7 +243,9 @@ void neogeo_set_lower_resolution( void )
 		!strcmp(Machine->gamedrv->name,"samsh5sp") ||
 		!strcmp(Machine->gamedrv->name,"samsh5sph") ||
 		!strcmp(Machine->gamedrv->name,"samsh5spho") ||
+		!strcmp(Machine->gamedrv->name,"samsh5spk") ||
 		!strcmp(Machine->gamedrv->name,"samsh5spuh") ||
+		!strcmp(Machine->gamedrv->name,"samsh5pfk") ||
 		!strcmp(Machine->gamedrv->name,"ncombat") ||
 		!strcmp(Machine->gamedrv->name,"ncombath") ||
 		!strcmp(Machine->gamedrv->name,"ncombatk") ||
