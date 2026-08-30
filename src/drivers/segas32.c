@@ -478,7 +478,7 @@ static void update_irq_state(void)
 	/* loop over interrupt vectors, finding the highest priority one with */
 	/* an unmasked interrupt pending */
 	for (vector = 0; vector < 5; vector++)
-		if (effirq & (1 << vector))
+		if (BIT(effirq, vector))
 		{
 			cpu_set_irq_line_and_vector(0, 0, ASSERT_LINE, vector);
 			break;
@@ -713,8 +713,8 @@ static void common_io_chip_w(int which, offs_t offset, UINT16 data, UINT16 mem_m
 				EEPROM_set_clock_line((data & 0x40) ? ASSERT_LINE : CLEAR_LINE);
 			}
 
-			coin_counter_w(1 + 2*which, data & 0x02);
-			coin_counter_w(0 + 2*which, data & 0x01);
+			coin_counter_w(1 + 2*which, BIT(data, 1));
+			coin_counter_w(0 + 2*which, BIT(data, 0));
 			break;
 
 		/* tile banking */
@@ -943,7 +943,7 @@ static void update_sound_irq_state(void)
 	/* loop over interrupt vectors, finding the highest priority one with */
 	/* an unmasked interrupt pending */
 	for (vector = 0; vector < 3; vector++)
-		if (effirq & (1 << vector))
+		if (BIT(effirq, vector))
 		{
 			cpu_set_irq_line_and_vector(1, 0, ASSERT_LINE, 2 * vector);
 			break;
@@ -980,14 +980,14 @@ static void clear_sound_irq(int which)
 static WRITE_HANDLER( sound_int_control_lo_w )
 {
 	/* odd offsets are interrupt acks */
-	if (offset & 1)
+	if (BIT(offset, 0))
 	{
 		sound_irq_input &= data;
 		update_sound_irq_state();
 	}
 
 	/* high offsets signal an IRQ to the v60 */
-	if (offset & 4)
+	if (BIT(offset, 2))
 		signal_v60_irq(MAIN_IRQ_SOUND);
 }
 
@@ -1736,7 +1736,8 @@ INPUT_PORTS_START( f1lap )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Unknown ) )
 	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
-    PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_BIT( 0x80, IP_ACTIVE_HIGH, IPT_SPECIAL )	/* EEPROM data*/
 
 	PORT_START	/* 0xc00000 - port 1 */
 	PORT_BITX(0x01, IP_ACTIVE_LOW, IPT_BUTTON1, "Gear Up",   IP_KEY_DEFAULT, IP_JOY_DEFAULT )
@@ -2524,9 +2525,15 @@ static struct GfxLayout bgcharlayout =
 	16*64
 };
 
-static struct GfxDecodeInfo gfxdecodeinfo[] =
+static struct GfxDecodeInfo gfx_segas32[] =
 {
-	{ REGION_GFX1, 0, &bgcharlayout,   0x00, 0x3ff  },
+	{ REGION_GFX1, 0, &bgcharlayout,   0, 0x400  },
+	{ -1 } /* end of array */
+};
+
+static struct GfxDecodeInfo gfx_multi32[] =
+{
+	{ REGION_GFX1, 0, &bgcharlayout,   0, 0x800  },
 	{ -1 } /* end of array */
 };
 
@@ -2562,8 +2569,8 @@ static MACHINE_DRIVER_START( system32 )
 	MDRV_VIDEO_ATTRIBUTES(VIDEO_TYPE_RASTER | VIDEO_NEEDS_6BITS_PER_GUN | VIDEO_RGB_DIRECT )
 	MDRV_SCREEN_SIZE(52*8, 28*8)
 	MDRV_VISIBLE_AREA(0*8, 52*8-1, 0*8, 28*8-1)
-	MDRV_GFXDECODE(gfxdecodeinfo)
-	MDRV_PALETTE_LENGTH(16384)
+	MDRV_GFXDECODE(gfx_segas32)
+	MDRV_PALETTE_LENGTH(0x4000)
 
 	MDRV_VIDEO_START(system32)
 	MDRV_VIDEO_UPDATE(system32)
@@ -2606,8 +2613,8 @@ static MACHINE_DRIVER_START( multi32 )
 	MDRV_SCREEN_SIZE(52*8*2, 28*8)
 	MDRV_VISIBLE_AREA(0*8, 52*8*2-1, 0*8, 28*8-1)
 
-	MDRV_GFXDECODE(gfxdecodeinfo)
-	MDRV_PALETTE_LENGTH(32768)
+	MDRV_GFXDECODE(gfx_multi32)
+	MDRV_PALETTE_LENGTH(0x8000)
 
 	MDRV_VIDEO_START(multi32)
 	MDRV_VIDEO_UPDATE(multi32)
@@ -3532,7 +3539,7 @@ static READ16_HANDLER( dual_pcb_masterslave )
 	return 0; /* 0/1 master/slave */
 }
 
-static DRIVER_INIT ( f1sl )
+static DRIVER_INIT ( f1lap )
 {
 	install_io_analog();
 
@@ -3541,6 +3548,8 @@ static DRIVER_INIT ( f1sl )
 	install_mem_write16_handler(0, 0x800000, 0x800fff,  dual_pcb_comms_w);
 	install_mem_read16_handler (0, 0x801000, 0x801003,  dual_pcb_masterslave);
 	system32_prot_vblank = f1lap_fd1149_vblank;
+
+	f1lap_kludge = true;
 }
 
 static DRIVER_INIT ( arf )
@@ -3697,8 +3706,8 @@ GAMEX(1994, jpark,    0,        system32,     jpark,    jpark,    ROT0, "Sega", 
 GAMEX(1994, svf,      0,        system32,     svf,      0,        ROT0, "Sega", "Super Visual Football - European Sega Cup", GAME_IMPERFECT_GRAPHICS )
 GAMEX(1994, svs,      svf,      system32,     svf,      0,        ROT0, "Sega", "Super Visual Soccer - Sega Cup (US)", GAME_IMPERFECT_GRAPHICS )
 GAMEX(1994, jleague,  svf,      system32,     svf,      jleague,  ROT0, "Sega", "The J.League 1994 (Japan)", GAME_IMPERFECT_GRAPHICS )
-GAMEX(1993, f1lap,    0,        system32,     f1lap,    f1sl,     ROT0, "Sega", "F1 Super Lap (World)", GAME_IMPERFECT_GRAPHICS )
-GAMEX(1993, f1lapj,   f1lap,    system32,     f1lap,    f1sl,     ROT0, "Sega", "F1 Super Lap (Japan)", GAME_IMPERFECT_GRAPHICS )
+GAMEX(1993, f1lap,    0,        system32,     f1lap,    f1lap,    ROT0, "Sega", "F1 Super Lap (World)", GAME_IMPERFECT_GRAPHICS )
+GAMEX(1993, f1lapj,   f1lap,    system32,     f1lap,    f1lap,    ROT0, "Sega", "F1 Super Lap (Japan)", GAME_IMPERFECT_GRAPHICS )
 GAMEX(1993, darkedge, 0,        system32,     darkedge, darkedge, ROT0, "Sega", "Dark Edge", GAME_IMPERFECT_GRAPHICS )
 GAMEX(1994, dbzvrvs,  0,        system32,     system32, dbzvrvs,  ROT0, "Sega / Banpresto", "Dragon Ball Z V.R.V.S.", GAME_IMPERFECT_GRAPHICS )
 GAMEX(1995, slipstrm, 0,        system32,     slipstrm, slipstrm, ROT0, "Capcom", "Slipstream (Brazil)", GAME_IMPERFECT_GRAPHICS )

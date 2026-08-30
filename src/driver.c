@@ -6181,6 +6181,7 @@ Other Sun games
 	DRIVER( rbff2h )	/* 0240 (c) 1998 SNK */
 	DRIVER( rbff2k )	/* 0240 (c) 1998 SNK */
 	DRIVER( rbff2uh )	/* 0240 (c) 2024 (AES Uncensored Hack) SNK */
+	DRIVER( rbff2kr )	/* 0240 (c) 2026 (Korean Translation) SNK */
 	DRIVER( mslug2 )	/* 0241 (c) 1998 SNK */
 	DRIVER( mslug2uh )	/* 0241 (c) 2024 (AES Uncensored Hack) SNK */
 	DRIVER( mslug2t )	/* 0941 (c) 2015 Trap15 Hack */

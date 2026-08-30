@@ -6464,10 +6464,10 @@ ROM_END
 
 ROM_START( rbffspeckr )
 	ROM_REGION( 0x500000, REGION_CPU1, 0 )
-	ROM_LOAD16_WORD_SWAP( "223-p1k.p1",  0x000000, 0x100000, CRC(93038d8f) SHA1(031373b471aac8a5bf3e75471c79aab7fb14879f) )
-	ROM_LOAD16_WORD_SWAP( "223-p2k.sp2", 0x100000, 0x400000, CRC(a224e8f3) SHA1(d9f606b7af8c3a531d4b18115064adc908d79f1e) )
+	ROM_LOAD16_WORD_SWAP( "223-p1kr.p1",  0x000000, 0x100000, CRC(2b9835f4) SHA1(04f7a45a96e97ab6ebad475d1794abad777de86a) )
+	ROM_LOAD16_WORD_SWAP( "223-p2kr.sp2", 0x100000, 0x400000, CRC(a224e8f3) SHA1(d9f606b7af8c3a531d4b18115064adc908d79f1e) )
 
-	NEO_SFIX_128K( "223-s1k.s1", CRC(5b0dbae8) SHA1(b560e91bf06f7024647615bc03804a445d2330fc) )
+	NEO_SFIX_128K( "223-s1kr.s1", CRC(5b0dbae8) SHA1(b560e91bf06f7024647615bc03804a445d2330fc) )
 
 	NEO_BIOS_SOUND_128K( "223-m1.m1", CRC(3fee46bf) SHA1(e750f85233953853618fcdff980a4721af1710a3) )
 
@@ -6479,14 +6479,14 @@ ROM_START( rbffspeckr )
 	NO_DELTAT_REGION
 
 	ROM_REGION( 0x2000000, REGION_GFX3, 0 )
-	ROM_LOAD16_BYTE( "223-c1k.c1", 0x0000000, 0x400000, CRC(f9da1b5f) SHA1(5febcd1981d27cef2aaadbaaf5defe0fa27ea776) ) /* Plane 0,1 */
-	ROM_LOAD16_BYTE( "223-c2k.c2", 0x0000001, 0x400000, CRC(e9f1cdda) SHA1(bfdd516407852dd6c9844fc1f1d137489b485966) ) /* Plane 2,3 */
-	ROM_LOAD16_BYTE( "223-c3k.c3", 0x0800000, 0x400000, CRC(b83231be) SHA1(c6ecda2d08ddb4a79399a1349af9194790af8fc6) ) /* Plane 0,1 */
-	ROM_LOAD16_BYTE( "223-c4k.c4", 0x0800001, 0x400000, CRC(0b9c11dd) SHA1(bee4d2bb179d6074b7fb96e366ebba2b77aba583) ) /* Plane 2,3 */
-	ROM_LOAD16_BYTE( "223-c5.c5",  0x1000000, 0x400000, CRC(321e362c) SHA1(39bd189334278f266124c97c6f70995f6f171cea) ) /* Plane 0,1 */
-	ROM_LOAD16_BYTE( "223-c6.c6",  0x1000001, 0x400000, CRC(d8fcef90) SHA1(bbccacb27f1e587bc144fe7ce68bd7b327ceaaee) ) /* Plane 2,3 */
-	ROM_LOAD16_BYTE( "223-c7.c7",  0x1800000, 0x400000, CRC(bc80dd2d) SHA1(086f372015eede88c6c578595fe915e28a589d2f) ) /* Plane 0,1 */
-	ROM_LOAD16_BYTE( "223-c8.c8",  0x1800001, 0x400000, CRC(5ad62102) SHA1(e28cc9840caed2a1a8bd65a03bef05231071040c) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "223-c1kr.c1", 0x0000000, 0x400000, CRC(f9da1b5f) SHA1(5febcd1981d27cef2aaadbaaf5defe0fa27ea776) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "223-c2kr.c2", 0x0000001, 0x400000, CRC(e9f1cdda) SHA1(bfdd516407852dd6c9844fc1f1d137489b485966) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "223-c3kr.c3", 0x0800000, 0x400000, CRC(b83231be) SHA1(c6ecda2d08ddb4a79399a1349af9194790af8fc6) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "223-c4kr.c4", 0x0800001, 0x400000, CRC(0b9c11dd) SHA1(bee4d2bb179d6074b7fb96e366ebba2b77aba583) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "223-c5.c5",   0x1000000, 0x400000, CRC(321e362c) SHA1(39bd189334278f266124c97c6f70995f6f171cea) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "223-c6.c6",   0x1000001, 0x400000, CRC(d8fcef90) SHA1(bbccacb27f1e587bc144fe7ce68bd7b327ceaaee) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "223-c7.c7",   0x1800000, 0x400000, CRC(bc80dd2d) SHA1(086f372015eede88c6c578595fe915e28a589d2f) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "223-c8.c8",   0x1800001, 0x400000, CRC(5ad62102) SHA1(e28cc9840caed2a1a8bd65a03bef05231071040c) ) /* Plane 2,3 */
 ROM_END
 
 ROM_START( rbffspecuh )
@@ -7278,6 +7278,32 @@ ROM_START( rbff2uh )
 	ROM_LOAD16_BYTE( "240-c4.c4", 0x1000001, 0x800000, CRC(c19a07eb) SHA1(139eac8b51cadf328dd42d8109f4e2463f57230c) ) /* Plane 2,3 */
 	ROM_LOAD16_BYTE( "240-c5.c5", 0x2000000, 0x800000, CRC(244dff5a) SHA1(156548156d3ceaa808d0053d0749af2526a3943e) ) /* Plane 0,1 */
 	ROM_LOAD16_BYTE( "240-c6.c6", 0x2000001, 0x800000, CRC(4609e507) SHA1(bb17f50a377dddb77c1eeda5944a7bcbf0cca5f7) ) /* Plane 2,3 */
+ROM_END
+
+ROM_START( rbff2kr )
+	ROM_REGION( 0x500000, REGION_CPU1, 0 )
+	ROM_LOAD16_WORD_SWAP( "240-p1kr.p1",  0x000000, 0x100000, CRC(f2da23a1) SHA1(481a947c0120e77b5d4224a8f5d74d5e6542551d) )
+	ROM_LOAD16_WORD_SWAP( "240-p2kr.sp2", 0x100000, 0x400000, CRC(c8679199) SHA1(b77afb2c9c2475ed8d947360dabfb7e7c26f9f90) )
+
+	NEO_SFIX_128K( "240-s1kr.s1",  CRC(c526a073) SHA1(a5d1f77929a783bc51a062d21f083d6bdfd30801) )
+
+	NEO_BIOS_SOUND_256K( "240-m1.m1", CRC(ed482791) SHA1(1f54a45967cb7842c33aa24be322c9f33ff75ac3) )
+
+	ROM_REGION( 0x0e00000, REGION_SOUND1, ROMREGION_SOUNDONLY )
+	ROM_LOAD( "240-v1.v1", 0x000000, 0x400000, CRC(f796265a) SHA1(736dff37eb91fc856b4d189249fb0de9b6c0813a) )
+	ROM_LOAD( "240-v2.v2", 0x400000, 0x400000, CRC(2cb3f3bb) SHA1(697e677890892f4b028c9a27c66809ca0a8a9b18) )
+	ROM_LOAD( "240-v3.v3", 0x800000, 0x400000, CRC(8fe1367a) SHA1(093d7a4ac2b54ad7ffb2dc316fe29415f7a99535) )
+	ROM_LOAD( "240-v4.v4", 0xc00000, 0x200000, CRC(996704d8) SHA1(0bf7a1d0660199dedf3c25be757eeab75cc6147e) )
+
+	NO_DELTAT_REGION
+
+	ROM_REGION( 0x3000000, REGION_GFX3, 0 )
+	ROM_LOAD16_BYTE( "240-c1kr.c1", 0x0000000, 0x800000, CRC(deecb39d) SHA1(00b2226a5285ac6bc9ba9627184a06b382446932) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "240-c2kr.c2", 0x0000001, 0x800000, CRC(cee4d315) SHA1(ed99978fdfc175c181c8fcd544699e2ad85b6c37) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "240-c3kr.c3", 0x1000000, 0x800000, CRC(4fcc1d7e) SHA1(4afaca97f43d000dbfa3620016d2e3bb2bd4fd90) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "240-c4kr.c4", 0x1000001, 0x800000, CRC(6123a546) SHA1(179898f6d2e8c2ae66b45a7cfd423ab1e9093148) ) /* Plane 2,3 */
+	ROM_LOAD16_BYTE( "240-c5kr.c5", 0x2000000, 0x800000, CRC(a0992c05) SHA1(c04f9939cedf78447b6adb6e83f02f00c0a8f431) ) /* Plane 0,1 */
+	ROM_LOAD16_BYTE( "240-c6kr.c6", 0x2000001, 0x800000, CRC(6b4c4216) SHA1(733071ad9cc81825daca22a8cceefae607b84ace) ) /* Plane 2,3 */
 ROM_END
 
 ROM_START( mslug2 )
@@ -11625,6 +11651,7 @@ GAMEB( 1998, rbff2,        neogeo,       neogeo, neo320, neogeo,  neogeo,   ROT0
 GAMEB( 1998, rbff2h,       rbff2,        neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - The Newcomers (NGH-2400)", &neogeo_ctrl, NULL )
 GAMEB( 1998, rbff2k,       rbff2,        neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers (Korean release)", &neogeo_ctrl, NULL )
 GAMEB( 2024, rbff2uh,      rbff2,        neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - The Newcomers (AES Uncensored Hack)", &neogeo_ctrl, NULL )
+GAMEB( 2026, rbff2kr,      rbff2,        neogeo, neo320, neogeo,  neogeo,   ROT0, "SNK", "Real Bout Fatal Fury 2 - The Newcomers / Real Bout Garou Densetsu 2 - The Newcomers (Korean Translation)", &neogeo_ctrl, NULL )
 GAMEB( 1998, mslug2,       neogeo,       neogeo, raster, neogeo,  neogeo,   ROT0, "SNK", "Metal Slug 2 - Super Vehicle-001/II (NGM-2410 ~ NGH-2410)", &neogeo_ctrl, NULL )
 GAMEB( 2024, mslug2uh,     mslug2,       neogeo, raster, neogeo,  neogeo,   ROT0, "SNK", "Metal Slug 2 - Super Vehicle-001/II (AES Uncensored Hack)", &neogeo_ctrl, NULL )
 GAMEB( 2015, mslug2t,      mslug2,       neogeo, raster, neogeo,  neogeo,   ROT0, "hack (trap15)", "Metal Slug 2 Turbo (NGM-9410) (hack)", &neogeo_ctrl, NULL )
